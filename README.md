@@ -2,7 +2,7 @@
 
 JavaScript：控制网页内容，给网页增加动态效果，实现用户跟浏览器的交互。
 
-JavaScript的组成：
+## JavaScript的组成
 
 1. ECMAScript——JavaScript语法规范
 
@@ -48,9 +48,9 @@ JavaScript写入位置：
 
    通常放置位置：`<body>`标签的最后
 
+## 变量
 
-
-变量——存储操作数据的”容器“，根据变量名获取到”容器“内的数据
+存储操作数据的”容器“，根据变量名获取到”容器“内的数据。
 
 * 变量的声明——var
 * 变量的声明及初始化赋值
@@ -64,7 +64,9 @@ JavaScript写入位置：
 
 
 
-数据类型：6种
+## 数据类型
+
+6种：
 
 1. Number
 
@@ -111,7 +113,7 @@ NaN: not a number，与任何值都不等，包括他本身
 
 
 
-数据类型转换
+### 数据类型转换
 
 1. 转换成Number
    * `parseInt()`
@@ -125,6 +127,8 @@ NaN: not a number，与任何值都不等，包括他本身
 3. 转换成Boolean
    * `Boolean()`
      0、null、undefined、NaN转换后的值为：false，其他true。
+
+## 操作符、操作数、表达式
 
 操作符、运算符——operator
 
