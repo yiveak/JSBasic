@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据类型转换</title>
+    <script>
+        //一、转换成Number类型：3种方式
+
+        /*1、转整数，parseInt()---不严格的数据转换
+        实数转整数，直接略去小数部分
+        */
+        var a = 1.45;
+        console.log("a =", a);
+        a = parseInt(a);
+        console.log("a转换成整数：", a);
+
+        console.log("1.0通过parseInt()转换后是：", parseInt(1.0));
+        console.log("\"-1.93f\"通过parseInt()转换后是：", parseInt("-1.93f"));
+        console.log("\"acf\"通过parseInt()转换后是：", parseInt("acf")); //NaN: not a number
+        console.log("\"b1.93f\"通过parseInt()转换后是：", parseInt("b1.93f"));
+        console.log("parseInt(\"b1.93f\")的数据类型是：", typeof(parseInt("b1.93f")));
+        console.log("\"神之塔\"通过parseInt()转换后是：", parseInt("神之塔"));
+        console.log("null通过parseInt()转换后是：", parseInt(null));
+        console.log("parseInt(null)的数据类型是：", typeof(parseInt(null)));
+        console.log("undefined通过parseInt()转换后是：", parseInt(undefined));
+        
+        /*2、转实数，parseFloat()---不严格的数据转换
+        整数转实数，显示时并不显示小数点000000
+        */
+        var b = 2;
+        console.log("b =", b);
+        console.log("b转换成实数：", parseFloat(b));
+        console.log("b的数据类型是：", typeof (b));
+
+        console.log("1.234通过parseFloat()转换后是：", parseFloat(1.234));
+        console.log("\"-1.93f\"通过parseFloat()转换后是：", parseFloat("-1.93f"));
+        console.log("\"acf\"通过parseFloat()转换后是：", parseFloat("acf")); //NaN: not a number
+        console.log("\"b1.93f\"通过parseFloat()转换后是：", parseFloat("b1.93f"));
+        console.log("parseFloat(\"b1.93f\")的数据类型是：", typeof(parseFloat("b1.93f")));
+        console.log("\"神之塔\"通过parseFloat()转换后是：", parseFloat("神之塔"));
+        console.log("null通过parseFloat()转换后是：", parseFloat(null));
+        console.log("parseFloat(null)的数据类型是：", typeof(parseInt(null)));
+        console.log("undefined通过parseFloat()转换后是：", parseFloat(undefined));
+
+        /*3、直接转换成Number数据类型：Number()---严格的数据转换
+        */
+        var c = "23";
+        console.log("c =", c); //注意：字符型跟数字型的颜色显示区别
+        console.log("c =", Number(c));
+        console.log("Number(c)的数据类型是：", typeof (Number(c)));
+        console.log("c的数据类型是：", typeof (c)); //注意：c的数据类型仍是字符类型
+        c = Number(c); //通过赋值操作后，原本的数据类型改变
+        console.log("c的数据类型是：", typeof (c));
+
+        console.log("1.234通过Number()转换后是：", Number(1.234));
+        console.log("\"-1.93f\"通过Number()转换后是：", Number("-1.93f"));
+        console.log("\"acf\"通过Number()转换后是：", Number("acf")); //NaN: not a number
+        console.log("\"b1.93f\"通过Number()转换后是：", Number("b1.93f"));
+        console.log("Number(\"b1.93f\")的数据类型是：", typeof(Number("b1.93f")));
+        console.log("\"神之塔\"通过Number()转换后是：", Number("神之塔"));
+        console.log("null通过Number()转换后是：", Number(null)); //注意：值为0
+        console.log("Number(null)的数据类型是：", typeof(Number(null)));
+        console.log("undefined通过Number()转换后是：", Number(undefined));
+
+        //二、转换成String类型
+
+        /*1、toString()，更常用
+        但，必须在变量有值的情况下进行调用
+         */
+        var x = 123;
+        x = x.toString();
+        console.log(x);
+        console.log("x的数据类型是：", typeof (x));
+
+        //在变量是undefined时，即未赋初始值时，调用toString()，生成Error
+        /*
+        var temp;
+        console.log(temp.toString());
+        */
+
+        console.log("1.234通过toString()转换后是：", 1.234.toString());
+        console.log("1.234.toString()的数据类型是：", typeof(1.234.toString()));
+        console.log("\"-1.93f\"通过toString()转换后是：", "-1.93f".toString());
+        console.log("\"b1.93f\"通过toString()转换后是：", "b1.93f".toString());
+        console.log("\"b1.93f\".toString()的数据类型是：", typeof("b1.93f".toString()));
+        console.log("\"神之塔\"通过toString()转换后是：", "神之塔".toString());
+        //下列语法错误
+        // console.log("null通过toString()转换后是：", null.toString()); 
+        // console.log("undefined通过toString()转换后是：", undefined.toString());
+
+        /*2、String()，更保险
+         */
+        var y = 456;
+        console.log(String(y));
+        //所谓的保险：即使在变量未赋初始值时，也可通过String()先转换成字符型，no error
+        var temp;
+        console.log("temp的数据类型是：", typeof(temp));
+        console.log("String(temp)的值是：", String(temp));
+        console.log("String(temp)的数据类型是：", typeof(String(temp)));
+        temp = null;
+        console.log("String(null)的值是：", String(temp));
+
+        //三、转换成Boolean类型
+        /*1、Boolean()
+        非0、非空、非null、非undefined即为true
+        */
+        var m="hello";
+        console.log(Boolean(m));
+        console.log("Boolean(0):", Boolean(0));
+        console.log("Boolean(-1):", Boolean(-1));
+        console.log("Boolean(\"\"):", Boolean(""));
+        console.log("Boolean(\"0\")", Boolean("0"));
+        console.log("Boolean(\"格莱普尼尔\")", Boolean("格莱普尼尔"));
+        console.log("Boolean(null):", Boolean(null));
+        console.log("Boolean(undefined):", Boolean(undefined));
+        var n;
+        console.log("Boolean(n):", Boolean(n));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

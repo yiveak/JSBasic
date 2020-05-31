@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>变量的练习</title>
+    <script>
+        //交换2个变量值
+
+        //方式1：借助一个临时变量
+        var a = 1;
+        var b = 2;
+        console.log("a =", a, "b =", b);
+        var temp;
+        temp = a;
+        a = b;
+        b = temp;
+        console.log("a =", a, "b =", b);
+
+        //方式2：值的加减
+        var x = 3;
+        var y = 7;
+        console.log("x =", x, "y =", y);
+        var sum = x + y;
+        x = sum - x;
+        y = sum - x;
+        console.log("x =", x, "y =", y);
+
+        //方式3：位运算
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
