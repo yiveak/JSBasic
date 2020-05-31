@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自增自减</title>
+    <script>
+        var a = 2;
+        console.log("a =", a);
+        console.log("a++ =", a++);
+        console.log("a =", a);
+        console.log("++a =", ++a);
+        console.log("a =", a);
+        /*
+        前置后置都改变变量的值
+        后置++：a++
+        这个"a++"表达式的值不变，保持原值；
+        前置++：++a
+        这个“++a”表达式的值随变量值改变。
+        */
+
+        var b = 1;
+        var c = ++b + ++b;
+        console.log(c); //5
+        
+        var d = 1;
+        console.log("d++ + ++d =", d++ + ++d); //4
+
+        var e=2;
+        console.log("e++ + e++ =", e++ + e++); //5
+
+        var f=3;
+        console.log("--f + --f =", --f + --f); //3
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
