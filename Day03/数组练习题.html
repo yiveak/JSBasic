@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组练习题</title>
+    <script>
+        var array = [23, 45, 78, 9.9, 15, 23, 42, 9, 11, -1, 5, 9, 28, 23, 16, 19, 15, 79, 23.0, 80, 93, 19, 96, 93];
+
+        console.log("Length of Array:", array.length);
+
+        //练习1、数组元素所有和
+        var sum = 0;
+        for (var i = 0; i < array.length; i++) {
+            sum += i;
+        }
+        console.log("数组元素所有和:", sum);
+
+        //练习2、数组元素中最大值
+        var max = 0;
+        for (var i = 0; i < array.length; i++) {
+            if (array[i] > max) {
+                max = array[i];
+            }
+        }
+        console.log("数组元素中最大值为:", max);
+
+        //练习3、数组元素中最小值
+        var min = array[0];
+        for (var i = 1; i < array.length; i++) {
+            if (array[i] <= min) {
+                min = array[i];
+            }
+        }
+        console.log("数组元素中最小值为:", min);
+
+        //练习4、数组元素平均值
+        var avg = 0,
+            sum = 0;
+        for (var i = 0; i < array.length; i++) {
+            sum += i;
+        }
+        console.log("i =", i);
+        console.log("数组元素平均为值:", avg = sum / i);
+
+        //练习5、倒序遍历输出数组元素
+        console.log("倒序遍历输出数组元素：");
+        for (var i = array.length - 1; i >= 0; i--) {
+            console.log("a" + "[" + i + "]" + "=" + array[i]);
+        }
+
+        //练习6、数组中每个元素通过--拼接成一整个字符串并输出
+        var str = "";
+        //后略改，不骚气
+        for (var i = 0; i < array.length - 1; i++) {
+            str += array[i] + "--";
+        }
+        console.log(str + array[array.length - 1]);
+        //前略改
+
+
+        // var arrayA=[1,2,3],arrayB=[4,5,6]
+        // var arrayTest=arrayA+arrayB;
+        // console.log(arrayTest);
+
+
+        //练习7、去掉数组中重复的23并重新输出
+        var array1 = [];
+        for (var i = 0; i < array.length; i++) {
+            if (array[i] != 23) {
+                //***利用的是新数组的长度***
+                array1[array1.length] = array[i];
+            }
+        }
+        console.log("去掉数组中重复的23的新数组:", array1);
+
+        //练习8、反转数组输出
+        var array2 = [];
+        for (var i = array.length - 1; i >= 0; i--) {
+            array2[array.length - 1 - i] = array[i];
+        }
+        console.log("反转数组输出", array2);
+        //原数组上操作
+        //交换的次数
+        for (var i = 0; i < array.length / 2; i++) {
+            var temp = array[array.length - 1 - i];
+            array[array.length - 1 - i] = array[i];
+            array[i] = temp;
+
+            // var temp = array[i];
+            // array[i] = array[array.length - 1 - i];
+            // array[array.length - 1 - i] = temp;
+        }
+        console.log("反转数组输出", array);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

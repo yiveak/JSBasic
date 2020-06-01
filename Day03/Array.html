@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array</title>
+    <script>
+        /*
+        数组：一组有序的数据集合
+        数据可以是：numbers, strings, boolean, arrays, objects
+        数组元素：数组中存储的数据
+        数组长度：数组中元素的个数
+        数组索引：从0开始，到数组长度减1
+        */
+
+        //方式1、通过构造函数的方式创建一个数组：var 数组名=new Array();
+        //创建一个空数组
+        var array1 = new Array();
+        console.log(array1);
+
+        //指定数组的长度，其中每个值默认是undefined
+        var array2 = new Array(3); //数组的长度为3
+        console.log(array2);
+
+        array2 = [2, 4, 6];
+        console.log(array2);
+
+        //方式2、通过字面量的方式创建一个数组：var 数组名=[]；
+        var array3 = [];
+        console.log(array3);
+
+
+        //获取数组中指定位置的值：数组名[索引]
+        array3 = [1, 2, 3, 4, 5, 6, 7, 8];
+        console.log(array3);
+        array3[3] = 4.5;
+        console.log(array3);
+        //接龙式额外添加
+        array3[8] = 10;
+        console.log(array3);
+        //跳过n个以上索引号添加，显示empty*n，且未赋值的数组值是undefined，
+        array3[11] = 13;
+        console.log(array3);
+        console.log(array3[10]);
+
+        //输出数组的长度----.length
+        console.log(array3.length);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

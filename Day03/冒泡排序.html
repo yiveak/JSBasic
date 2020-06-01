@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>冒泡排序</title>
+    <script>
+        //冒泡排序：按照一定的顺序排列，从大到小或者从小到大
+        //for循环的嵌套
+
+        var arr = [2, 4, 6, 1, 7, 23, 90, 9, 5, 8, 10];
+        console.log("array.length = " + arr.length);
+
+        //从大到小
+        //比较的轮数
+        for (var i = 0; i < arr.length-1; i++) {
+            //每一轮比较的次数
+            for (var j = 0; j < arr.length - 1 - i; j++) {
+                if (arr[j] < arr[j+1]) {
+                    var temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                }
+            }
+        }
+        console.log("从大到小:", arr);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
