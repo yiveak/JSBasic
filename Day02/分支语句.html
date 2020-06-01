@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分支语句</title>
+    <script>
+        /*流程控制：
+        1. 顺序结构
+        2. 分支结构
+        3. 循环结构
+        */
+
+        //分支判断
+        /*1、if-else
+            if(条件表达式){
+                代码块
+            } else {
+                代码块
+            }
+        */
+
+        // //是否大于18岁
+        // var age = parseInt(prompt("请输入您的年龄：")); //将用户的输入转换成整数，如果用户输入的浮点数，则可将该数据转换成有效的输入
+        // console.log("输入的年龄是：", age);
+        // //如果用户输入的是非数字，比如字符串，则需要通过if(！isNaN())来验证有效输入
+        // if (!isNaN(age)) {
+
+        //     if (age >= 18) {
+        //         console.log("Happy life!");
+
+        //     } else {
+        //         console.log("Enjoy time!");
+        //     }
+        // } else {
+        //     console.log("请输入正确的数字年龄！");
+        // }
+
+
+        // //比2个值的大小---三元表达式：表达式1？表达式2：表达式3，如果表达式1的结果为true，则执行表达式2，否则执行表达式3。
+        // var a=3, b=7;
+        // var max=a>b?a:b;
+        // console.log("max =", max);
+
+
+        // //比三个值的大小————if-else嵌套
+        // var a = 3,
+        //     b = 6,
+        //     c = -2;
+        // if (a > b) {
+        //     if (a > c) {
+        //         console.log("最大值为：", a);
+        //     } else {
+        //         console.log("最大值为：", c);
+        //     }
+        // } else {
+        //     if (b > c) {
+        //         console.log("最大值为：", b);
+        //     } else {
+        //         console.log("最大值为：", c);
+        //     }
+        // }
+
+        // //else-if：用于范围的判断
+        // //根据分数的范围输出成绩等级
+        // var score = Number(prompt("请输入分数（0~100）："));
+        // //验证有效输入
+        // if (!isNaN(score)) {
+        //     if (score >= 90 && score <= 100) {
+        //         console.log("A");
+        //     } else if (score >= 80) {
+        //         console.log("B");
+        //     } else if (score >= 70) {
+        //         console.log("C");
+
+        //     } else if (score >= 60) {
+        //         console.log("D");
+
+        //     } else {
+        //         console.log("E");
+        //     }
+
+        // } else {
+        //     alert("请输入正确格式的分数！");
+        // }
+
+
+        //switch-case()：用于具体值的判断
+        /*计算表达式的值后跟case后面跟的值严格比较
+        switch(表达式){
+            case 值1: 代码块1; break;
+            case 值2: 代码块2; break;
+            case 值3: 代码块3; break;
+            .
+            .
+            .
+            case 值n: 代码块n; break;
+            default: 代码块n+1;
+        }
+        */
+        // //根据输入的数字（1~12）输出当月的天数
+        // var month = parseInt(prompt("请输入1~12之间的月份："));
+        // if (!isNaN(month)) {
+        //     switch (month) {
+        //         case 1:
+        //         case 3:
+        //         case 5:
+        //         case 7:
+        //         case 8:
+        //         case 10:
+        //         case 12:
+        //             console.log(month + "月有31天。");
+        //             break;
+        //         case 2:
+        //             console.log(month + "月有28天。");
+        //             break;
+        //         case 4:
+        //         case 6:
+        //         case 9:
+        //         case 11:
+        //             console.log(month + "月有30天。");
+        //             break;
+        //     }
+        // } else {
+        //     alert("请输入正确的月份数！");
+        // }
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

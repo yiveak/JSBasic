@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>While循环</title>
+    <script>
+        /*
+        有可能一次循环都不执行
+        while(循环判断条件){
+            循环体;
+            计数器;
+        }
+        */
+
+        // //练习1.计算1~100数字之和
+        // var i = 1,
+        //     sum = 0;
+        // while (i <= 100) {
+        //     sum += i;
+        //     i++;
+        // }
+        // console.log("sum =", sum);
+
+        // //练习2.计算1~100之间所有奇数的和
+        // var i = 1,
+        //     sum = 0;
+        // while (i <= 100) {
+        //     if (i % 2 != 0) {
+        //         sum += i;
+        //     }
+        //     i++;
+        // }
+        // console.log("1~100所有奇数的和为：" + sum);
+
+        // //练习3. 求9的阶乘
+        // var i = 1,
+        //     x = 1;
+        // while (i < 7) {
+        //     x *= i;
+        //     i++
+        // }
+        // console.log("6的阶乘值为：", x);
+
+        //练习4. 判断输入的账户名跟密码是否正确(丐版)
+        var userName = prompt("请输入用户名");
+        var userPwd = prompt("请输入密码");
+        while (userName != "admin" || userPwd != "123456") {
+            userName = prompt("请输入用户名");
+            userPwd = prompt("请输入密码");
+        }
+        console.log("登录成功。");
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

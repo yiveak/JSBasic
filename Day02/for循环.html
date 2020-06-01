@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for循环</title>
+    <script>
+        /*
+        for(表达式1；表达式2；表达式3){
+            循环体
+        }
+        表达式1：计数器的声明
+        表达式2：循环判断的条件
+        表达式3：计算器累加、累减
+        */
+
+        // // 练习1. 输出7次指定字符串
+        // var msg = "bilibli干杯";
+        // for (var i = 1; i <= 5; i++) {
+        //     console.log(msg);
+        // }
+
+        //练习2. 画下图
+        /*
+         *
+         **
+         ***
+         ****
+         *****
+         ******
+         */
+        //for循环的嵌套
+        for (var i = 0; i < 6; i++) {
+            for (var j = 0; j <= i; j++) {
+                document.write("*");
+            }
+            docment.write("<br/>");
+
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
