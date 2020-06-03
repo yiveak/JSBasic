@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数练习isPrimeNum</title>
+    <script>
+        //判断一个数是否是素数
+        function isPrimeNum(num) {
+            for (let i = 2; i < num; i++) {
+                if (num % i == 0) {
+                    console.log(num + " is not a prime number.");
+                    break;
+                }
+            }
+            console.log(num + " is a prime number.");
+        }
+
+        var num = parseInt(prompt("Please enter a number"));
+        isPrimeNum(num);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

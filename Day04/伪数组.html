@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伪数组</title>
+    <script>
+        /*
+        arguments:特别的对象
+        是当前函数的一个内置属性
+        也就是说所有函数都内置了一个arguments对象
+        arguments对象中存储了传递的所有的实参
+        arguments是一个伪数组
+        */
+
+        function f1() {
+            //通过arguments.length获取实参的个数，即长度
+            console.log(arguments.length);
+            //使用arguments对象获取传入的每个参数的具体值
+            console.log(arguments);
+        }
+        f1(2, 4, 6, 7, 9, 19, 20, 34, 18);
+
+        //求N个数的和
+        function getSum() {
+            var sum = 0;
+            for (var i = 0; i < arguments.length; i++) {
+                sum += arguments[i];
+            }
+            return sum;
+        }
+        console.log(getSum(4, 3, 4));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

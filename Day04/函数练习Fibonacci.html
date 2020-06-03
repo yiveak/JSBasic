@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数练习Fibonacci</title>
+    <script>
+        //斐波那契数列：1，1，2，3，5，8...
+        //求和
+        function getSumOfFibonacci(num) {
+            var num1 = 1,
+                num2 = 1,
+                sum = 0;
+            //bug:when num < 3    
+            for (var i = 3; i <= num; i++) {
+                sum = num1 + num2;
+                num1 = num2;
+                num2 = sum;
+            }
+            return sum;
+        }
+        console.log(getSumOfFibonacci());
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

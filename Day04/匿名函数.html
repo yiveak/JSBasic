@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>匿名函数</title>
+    <script>
+        /*
+        匿名函数：函数定义的另一种方式，即无函数名，有函数体
+        */
+
+        function f1() {
+            console.log("hello, f1");
+        }
+        //调用函数
+        f1();
+        //输出整个具体的函数
+        console.log(f1)
+
+        /*
+        匿名函数不能直接调用，通过赋给一个变量，即函数赋值给一个变量————函数表达式
+        var 变量=function (){
+            函数体
+        }
+        */
+        var f2 = function () {
+            console.log("hello, f2");
+        }
+        //输出的是整个具体的匿名函数
+        console.log(f2);
+        //调用匿名函数
+        f2();
+
+        /*函数的自调用————没有名字，声明的同时，直接调用
+        (function(){})();
+        一次性的，所以即使后面相同内容的自调用函数也不能覆盖前面的自调用函数
+        */
+        (function () {
+            console.log("Hello, 函数自调用。")
+        })();
+        (function () {
+            console.log("Hello, 函数自调用。")
+        })();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

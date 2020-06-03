@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>回调函数</title>
+    <script>
+        //函数的数据类型是：functio
+        function f1() {
+            console.log("function-f1");
+        }
+        //先调用了一次函数，然后是undefined，因为console.log(console.log("function-f1"));
+        console.log(typeof f1());
+        //输出函数的数据类型
+        console.log(typeof f1);
+
+
+        //函数作为参数使用————即为，回调函数
+        function f2(fn) {
+            fn();
+        }
+
+        function f3() {
+            console.log("函数作为参数调用。");
+        }
+        //将被调用函数的中函数体传给调用函数，即写被调用函数就可
+        f2(f3);
+        //if 如下，则被调用函数先自执行了一次，然后控制台返回信息：Uncaught TypeError: fn is not a function
+        // f2(f3());
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

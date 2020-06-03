@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数练习Array</title>
+    <script>
+        // //两个数的差
+        // function getSub(x, y) {
+        //     return x - y;
+        // }
+        // console.log(getSub(3, 9));
+
+
+        // //一组数字中的最大值
+        // function getArrayMax(array){
+        //     var max=array[0];
+        //     for(let i=1;i<array.length;i++){
+        //         if(max<array[i]){
+        //             max=array[i];
+        //         }
+        //     }
+        //     return max;
+        // }
+        // var arr=[23,17,89,65,9.0];
+        // console.log(getArrayMax(arr));
+
+        // //一组数字中的最小值
+        // function getArrayMin(array){
+        //     var min=array[0];
+        //     for(let i=1;i<array.length;i++){
+        //         if(min>array[i]){
+        //             min=array[i];
+        //         }
+        //     }
+        //     return min;
+        // }
+        // console.log(getArrayMin([2,3,4,16,7,0,-12]));
+
+        // //求一组数字的和
+        // function getArraySum(array){
+        //     var sum=0;
+        //     for(let i=0; i<array.length;i++){
+        //         sum+=array[i];
+        //     }
+        //     return sum;
+        // }
+        // console.log(getArraySum([1,2,3,4,5]));
+
+        //求一组数字的最大值、最小值、和，一次输出————通过一个新的数组存值进行输出
+
+        function getArrayMaxAndMinAndSum(array) {
+            var max = array[0],
+                min = array[0],
+                sum = array[0];
+            for (let i = 1; i < array.length; i++) {
+                sum += array[i];
+                //max
+                if (max < array[i]) {
+                    max = array[i];
+                }
+                //min
+                if (min > array[i]) {
+                    min = array[i];
+                }
+            }
+            //通过一个新的数组存储多个返回值
+            var arr = [max, min, sum];
+            return arr;
+        }
+        var resultArray = getArrayMaxAndMinAndSum([1, 2, 3, 4]);
+        console.log("max is: " + resultArray[0]);
+        console.log("min is: " + resultArray[1]);
+        console.log("sum is: " + resultArray[2]);
+    </script>
+</head>
+
+<body>
+
+
+</body>
+
+</html>

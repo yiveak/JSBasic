@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数练习阶乘累加和</title>
+    <script>
+        //1!+2!+3!+4!+...
+
+        //n!
+        function getFact(n) {
+            var fact = 1;
+            if (n == 0) {
+                return fact;
+            } else {
+                for (var j = 1; j <= n; j++) {
+                    fact *= j;
+                }
+                return fact;
+            }
+        }
+        // console.log(getFact(0));
+        // console.log(getFact(1));
+        // console.log(getFact(3));
+
+        function getSumOfFact(m) {
+            var sum = 0;
+            for (var i = 1; i <= m; i++) {
+                //调用n!函数
+                sum += getFact(i);
+            }
+            return sum;
+        }
+
+        console.log(getSumOfFact(1));
+        console.log(getSumOfFact(1));
+        console.log(getSumOfFact(5));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

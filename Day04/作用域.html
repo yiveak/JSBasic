@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作用域</title>
+    <script>
+        /*
+        作用域：变量使用的范围
+
+        全局变量(var)、局部变量(函数内部声明定义的变量不能外部访问)、全局作用域、局部作用域
+
+        块级作用域————{}大括号表示块级区，在{}里声明的变量，其使用范围就在{}，即块级作用域
+        但JS中无块级块级作用域，其在{}声明的变量，也能在{}之外进行访问获取改变变量的值
+        luckily, ES6中通过let能声明局部变量，即表示该变量只能在当前的{}内使用，外部不能访问
+        */
+
+        //局部变量(函数内部声明定义的变量不能外部访问)
+        function f1() {
+            var str = "我是函数内部定义的变量";
+            console.log(str);
+        }
+        // console.log(str); //返回Error：str is not defined.
+
+        //隐式全局变量：声明变量的时候没有var，即为隐式全局变量
+        //函数内的隐式全局变量能被外部访问获取，但必须该函数被调用一次？
+        function f2() {
+            str = "我是隐式全局变量。"
+            number = 100;
+        }
+        f2();
+        console.log(str);
+        console.log(number);
+
+        //隐式全局变量可以被删除，而全局变量（即通过var声明的变量）不能被删除
+        var num1 = 2;
+        num2 = 3;
+        delete num1;
+        delete num2;
+        console.log(typeof num1); //number
+        console.log(typeof num2); //undefined
+        console.log(num1);
+        // console.log(num2); //Error: num2 is not defined
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

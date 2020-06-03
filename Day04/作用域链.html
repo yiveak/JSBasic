@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作用域链</title>
+    <script>
+        //变量应在当前的作用域里找，否则一级一级向上找，即为作用域链
+        var str = "我在0级作用域";
+
+        function f1() {
+            var str = "我在1级作用域";
+
+            function f2() {
+                var str = "我在2级作用域";
+
+                function f3() {
+                    var str = "我在3级作用域";
+                    console.log(str);
+                }
+                //要调用函数，即执行该函数
+                f3();
+            }
+            //要调用函数，即执行该函数
+            f2();
+        }
+
+        f1();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>预解析</title>
+    <script>
+        //预解析：提前解析代码————将变量的声明、函数的定义提前，提前到当前所在作用域的最上面
+
+        console.log(num); //，虽然代码从上到下执行，但no Error，得到的是undefined
+        /*
+        即类似于：将变量的声明提前
+        var num;
+        console.log(num);
+        */
+        var num = 10; // same as var num;
+
+
+        console.log(X); //后面不跟var x; 则报错：x is not defined.
+
+
+        //形式1
+        function f1() {
+            console.log("我是第一次的函数声明");
+        }
+        f1();
+
+        function f1() {
+            console.log("我是第二次的函数声明");
+        }
+        f1();
+        //分析：先后面的函数声明覆盖前面的函数声明，然后调用2次f1函数
+
+
+        //形式2
+        f2(); //undefined
+        function f2() {
+            console.log(m);
+            var m = 9;
+        }
+        /*分析:
+        f2();
+        function f2(){
+            var m;
+            console.log(m);
+            var m=9;
+        }
+
+        */
+
+
+        //形式3
+        f3(); //返回：undefined
+        var a = 5;
+
+        function f3() {
+            console.log(a);
+            var a = 7;
+        }
+        /*分析
+        function f3(){
+            var a;
+            console.log(a);
+            var a=7;
+        }
+        var a=5;
+        */
+
+
+        //形式4
+        f4(); //返回：undefined
+        var b = 9;
+
+        function f4() {
+            console.log(b);
+        }
+        /*
+        no:
+        function f4(){
+            var b;
+            console.log(b);
+        }
+        var b=9;
+
+        yes:
+        var b;
+        function f4(){
+            console.log(b);
+        } //函数的声明会提前到这个函数调用之前
+        b=9; //这个变量的声明会提前的变量声明之前，注意是在该变量的作用域的内的最上面
+        */
+
+
+        // 变量的声明会提前的变量声明之前，注意是在该变量的作用域的内的最上面
+        //函数内预解析变量，其变量的声明只会提前到函数内部这个作用域的最上面
+        // function f5() {
+        //     console.log(c);
+        //     var c = 100;
+        // }
+        // f5(); //返回：undefined
+        // // console.log(c); //返回：Error---c is not defined.
+
+
+        //预解析根据<script>标签分段预解析，互不影响。
+
+
+        var y = 99;
+
+        function f6() {
+            alert(y);
+            var y = 111;
+        }
+        f6(); //返回：undefined
+        console.log(y); //返回：99
+
+
+        console.log(t); //返回的不是undefined，注意下面函数的函数名，所以返回的是t这个函数的整个具体函数代码
+        function t() {
+            console.log("tttttt");
+        }
+        var t = 2;
+        console.log(t); //返回：1
+
+
+        var u = 12;
+        f7(); //返回的是：undefined 89
+        function f7() {
+            var v = 89;
+            console.log(u); //undefined
+            console.log(v);
+            u = '1234567';
+        }
+        /*分析：
+        var u; //变量声明提前，预解析
+        u=12; //变量赋值，不是隐式全局变量
+        function f7(){
+            var v;
+            v=89;
+            console.log(u); //注意作用链的问题
+            console.log(v);
+            u='1234567';
+        }
+        */
+
+
+        f8();
+        console.log(k); //9 why?
+        console.log(j); //9 why?
+        console.log(i); //Error why?
+
+        function f8() {
+            var i = j = k = 9;
+            console.log(i); //9
+            console.log(j); //9
+            console.log(k); //9
+        }
+        /*
+        分析：
+        function f8(){
+            var i;
+            i=9; //变量声明有var，是函数内的局部变量
+            j=9; //变量声明前面没有var，隐式全局变量
+            k=9; //变量声明前面没有var，隐式全局变量
+            console.log(i); //9
+            console.log(j); //9
+            console.log(k); //9
+        }
+        console.log(k); //9 所以可以外部访问获取
+        console.log(j); //9 
+        console.log(i); // 所以外部不可访问，报错
+        */
+
+
+        //important!
+        f9(); //Error
+        var f9 = function () {
+            console.log(r); //undefined---无undefined，因为173行f9()直接报错，下面的代码不执行
+            var r = 1000;
+        }
+        /*
+        分析：
+        var f9; //f9是一个变量
+        f9(); //变量不能调用，直接报错
+        f9=function(){ //这是一个函数表达式，是一个赋值过程，f9是一个变量
+            console.log(r);
+            var r=1000;
+        }
+        */
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

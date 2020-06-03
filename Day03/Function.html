@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function</title>
+    <script>
+        /*
+        函数的声明定义、构造函数
+        funtion 函数名(){
+            函数体
+        }
+
+        函数的调用
+        函数名();
+        */
+
+        //嵌套三元表达式，比较三个实数的最大值
+        var a = 4,
+            b = 30,
+            c = 18;
+        max3(a, b, c);
+
+        function max3(x, y, z) {
+            var max = x > y ? (x > z ? x : z) : (y > z ? y : z);
+            console.log("max3 = " + max);
+        }
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

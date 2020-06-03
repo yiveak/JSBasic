@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数作为返回值使用</title>
+    <script>
+        function f1() {
+            console.log("f1调用了。");
+            return function () {
+                console.log("f1里的匿名函数。");
+            };
+        }
+        //调用f1函数将其赋给fn这个变量，函数表达式
+        var fn = f1();
+        //调用fn函数
+        fn();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
