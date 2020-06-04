@@ -215,7 +215,7 @@ false-null //0
 
 ##### 1. 单个变量
 
-:star:如果只有单个变量，则先将变量转换成布尔值
+如果只有单个变量，则先将变量转换成布尔值
 
 Tips：只有`0`、`''`、`null`、`undefined`、`NaN`、`false`转换后的值均为：false，其他true，比如：`[]`、`{}`。
 
@@ -308,9 +308,11 @@ JavaScript variable are **containers** for data values.
 
 **Objects are variables too**, they can contain many values.
 
+无序属性的集合
+
  Think of an object as a list of  values: **name: value** pairs --- 名值对。
 
-`name : value` 是对象的属性以及属性值。
+`name : value` 是对象的属性及属性值。其中，value也可以是函数。
 
 JavaScript objects are containers for **named values**.
 
@@ -324,6 +326,14 @@ JavaScript objects are containers for **named values**.
 
 
 
+```
+对象的行为和特征：
+特征 ---- 属性 属性一般是名词，描述事物的特征
+行为 ---- 方法 方法一般是函数，描述对事物的行为和功能
+```
+
+
+
 ### Access properties 
 
 获取属性的两种方式：
@@ -332,6 +342,8 @@ JavaScript objects are containers for **named values**.
 objectName.propertyName
 //or
 objectName['propertyName']
+//if property value is a function
+objectName["propertyName"]();
 ```
 
 ```javascript
@@ -400,13 +412,9 @@ document.write("This is some text.");
 
 
 
-
-
-
-
 ### The Object Constructor
 
-对象构造函数
+对象构造器
 
 ***The Standard way to create an "object type" is to use an object constructor function.***
 
@@ -451,9 +459,44 @@ The **this** keyword refers to the **current object** , and **its value cannot b
    obj.escape();
    ```
 
+   new关键字总是和构造函数一起使用
+
    
 
 2. **自定义构造函数**（工厂模式）
+   构造函数，一种特殊的函数。主要用来在创建对象时初始化对象，即w
+
+   ```javascript
+   //函数名大写开头，通常
+   function Phone(brand, price, capacity, height, width, depth, weight, display){
+       this.brand = brand;
+       this.price = price;
+       this.capacity = capacity;
+       this.height = height;
+       this.width = width;
+       this.depth = depth;
+       this.weight = weight;
+       this.display = display;
+       this.sendMsg = function () {
+           console.log("Hello, iPhone SE.")
+       }
+   }
+   
+   //实例函数，即创建一个对象
+   var phone = new Phone("Apple", 2999, 64, 138.4, 67.3, 7.3, 148, 4.7)
+   
+   //添加一个属性
+   phone.chip="A13 Bionic Chip";
+   
+   //调用对象的方法
+   phone.sendMsg();
+   //or phone["sendMsg"]();
+   
+   ```
+
+   this关键字 ---- 隐式对象
+
+   
 
 3. **字面量的方式** ---- the object literal( or initializer) syntax
 
@@ -470,6 +513,76 @@ The **this** keyword refers to the **current object** , and **its value cannot b
 
 
 
+遍历对象的属性 ---- for-in循环
+
+```javascript
+for (var key in object){
+    console.log("key = "+object[key]);
+}
+```
+
+
+
+删除对象的属性 ---- delete objectName.propertyName
+
+#### 简单类型和复杂类型
+
+简单类型，基本类型，值类型：number, string, boolean, symbol
+
+复杂类型，引用类型：object
+
+空类型：null, undefined
+
+值类型之间，传递值。
+
+引用类型之间，传递引用。
+
+堆：存储复杂类型， 
+
+* 垃圾回收机制
+
+栈：存储函数的参数值、局部变量的值等
+
+JavaScript的基本类型在栈中存储，object存储在堆中。
+
+#### 内置对象
+
+##### Math对象
+
+常用的Math属性与方法
+
+##### Date对象
+
+默认获取当前系统的时间。通过创建`Date` 实例来处理日期和时间。
+
+> * Date.getDay(); //一周的第几天，0表示星期日
+> * Date.getDate(); //一月中的哪一日
+> * Date.getFullYear(); //年份
+> * Date.getMonth(); //月份，0表示1月
+> * Date.getHours(); //小时数
+> * Date.getMinutes(); //分钟数
+> * Date.getSeconds(); //秒数
+> * Date.getTime(); //格林威治时间
+
+```javascript
+var dt = new Date();
+
+* console.log(dt.toString());
+
+console.log(dt.toDateString()); //EN ---日期
+console.log(dt.toLocalDateString()); //数字日期
+
+console.log(dt.toTimeString());
+console.log(dt.toLocalTimeString()); //小时分钟秒
+
+* console.log(dt.valueOf()); //1970.01.01到当前的毫秒值 ----获取日期的毫秒值
+
+var now = + new Date(); //Date对象的一种特殊的写法，只适用于Date对象。不支持的H5的浏览器通过此种获取valueOf()
+```
+
+
+
+#### Array对象
 
 
 
@@ -477,38 +590,7 @@ The **this** keyword refers to the **current object** , and **its value cannot b
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+## 其他
 
 ### JavaScript提供三种类型的popup box
 

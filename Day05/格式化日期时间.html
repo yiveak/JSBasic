@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>格式化日期时间</title>
+    <script>
+        //返回的时间格式是:yyyy-MM-dd HH:mm:ss
+        //先获取各个时间部分,然后拼接输出
+        function formatDate(dt) {
+            // var dt = new Date();
+            var year = dt.getFullYear(),
+                month = dt.getMonth(),
+                day = dt.getDate(),
+                hour = dt.getHours(),
+                minute = dt.getMinutes(),
+                second = dt.getSeconds();
+            month > 10 ? month : "0" + month;
+            day > 10 ? day : "0" + day;
+            hour > 10 ? hour : "0" + hour;
+            minute > 10 ? minute : "0" + minute;
+            second > 10 ? second : "0" + second;
+            return (year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second);
+        }
+        console.log(formatDate(new Date()));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
