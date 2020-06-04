@@ -4,7 +4,7 @@ JavaScript：描述网页的行为。
 
 特点：脚本语言、动态的、弱类型、面向对象
 
-JavaScript控制台（F12---Console）：可以直接输入JavaScript代码并运行出结果——简单实用的调试手段。
+JavaScript控制台（F12---Console）：直接输入JavaScript代码并运行出结果，一种简单实用的调试方式。
 
 ## JavaScript的组成
 
@@ -22,7 +22,7 @@ JavaScript控制台（F12---Console）：可以直接输入JavaScript代码并�
 
 
 
-JavaScript写入位置：
+JavaScript的位置：
 
 1. HTML标记标签内，或者说是行内
 
@@ -52,27 +52,29 @@ JavaScript写入位置：
 
    通常放置位置：`<body>`标签的最后。
 
+
+
 ## 变量
 
 注意：***JS中变量声明时并不声明变量的数据类型。***
 
-存储操作数据的”容器“，根据变量名获取到”容器“内的数据。
+存储被操作数据的”容器“，根据变量名获取到这个”容器“内的数据。Container
 
-* 变量的声明——var
-* 变量的声明及初始化赋值
-* 多个变量的声明赋值
+* 变量的声明 ---- var，let(ES6，局部变量)
+* 变量的声明及初始化赋值 ---- 变量声明了，但未赋初始值，则这个变量的值是undefined。
+* 多个变量的声明赋值 ---- 逗号隔开各个变量
 
 变量名的命名规则
 
 * 除了以字母、下划线开头，**$也包括**。
 * 驼峰命名法：`var bigNumber=10;`
-* 大小写敏感
+* 大小写敏感 ---- case-sensitive
 
 
 
 ## 数据类型
 
-JavaScript分为2类数据类型：原始类型(primitive type)、对象类型(object type)。总共7种
+2类数据类型：原始类型(primitive type)、对象类型(object type)。总共7种
 
 ### 原始类型
 
@@ -116,22 +118,25 @@ JavaScript分为2类数据类型：原始类型(primitive type)、对象类型(o
 
 对象：属性(property)的集合，每个属性都由”名/值对“构成。
 
-* ”名/值对“中的值可以是：原始值、对象。
+* ”名/值对“中的值可以是：原始值、函数、对象。
 * 特殊的对象：全局对象。
 
-1. Object
-
-NaN: not a number，与任何值都不等，包括他本身
-
-所以，通过`isNaN()`验证其他值是不是、不是一个数值。
 
 
+`NaN` : not a number，与任何值都不等，包括他本身。通过`isNaN()`验证其他值是不是、不是一个数值，多数验证用户的输入的数据是否是正确的格式。
 
-
+```javascript
+var x = prompt("Please enter a star number for service");
+if(isNaN(x)){
+   alert("Please enter right number, not other data.");
+} else {
+    alert("Thanks for you vote.")
+}
+```
 
 获取数据类型——`typeof()`
 
-转义字符——`\`
+转义字符(escape)——`\`
 
 字面量，直接量，固定值：程序中直接使用的数据值。
 
@@ -151,8 +156,6 @@ NaN: not a number，与任何值都不等，包括他本身
 3. 转换成Boolean
    * `Boolean()`
      `0`、`''`、`null`、`undefined`、`NaN`、`false`转换后的值均为：false，其他true，比如：`[]`、`{}`。
-
-
 
 ### 【隐式类型转换】
 
@@ -267,38 +270,42 @@ Tips：只有`0`、`''`、`null`、`undefined`、`NaN`、`false`转换后的值�
 
 ## 操作符、操作数、表达式
 
-操作符、运算符——operator
+* 操作符、运算符——operator
 
-1. 算术运算符
+  > > 1. 算术运算符
+  > >
+  > > * 一元运算符
+  > >   * ++, --
+  > > * 二元运算符
+  > >   * +, -, *, /, % 
+  > > * 三元运算符
+  >
+  > > 2. 逻辑运算符
+  > >
+  > > * 逻辑与 `&&`
+  > >
+  > > * 逻辑或`||`
+  > >
+  > > * 逻辑非`!`
+  > >
+  > >   > 短路运算
+  > >   >
+  > >   > 
+  >
+  > > 3. 关系运算符（比较运算符）
+  > >
+  > > * \>, \>=, <, <=, ==, !=F
+  > > * ===, !==：包括值、类型的比较
+  >
+  > > 4. 赋值运算符
+  > >
+  > > * =, +=, -=, *=, /=, %=
+  >
+  > 运算符的优先级
 
-   * 一元运算符
-     * ++, --
-   * 二元运算符
-     * +, -, *, /, % 
-   * 三元运算符
+* 操作数——operation
 
-2. 逻辑运算符
-
-   * 逻辑与 `&&`
-   * 逻辑或`||`
-   * 逻辑非`!`
-
-3. 关系运算符（比较运算符）
-
-   * \>, \>=, <, <=, ==, !=F
-   * ===, !==：包括值、类型的比较
-
-4. 赋值运算符
-
-   * =, +=, -=, *=, /=, %=
-
-   >运算符的优先级
-
-操作数——operation
-
-表达式：由操作数、操作符组成的式子，会有值。
-
-
+* 表达式：由操作数、操作符组成的式子，会有值。
 
 
 
@@ -308,7 +315,7 @@ JavaScript variable are **containers** for data values.
 
 **Objects are variables too**, they can contain many values.
 
-无序属性的集合
+无序属性的集合。
 
  Think of an object as a list of  values: **name: value** pairs --- 名值对。
 
@@ -330,57 +337,6 @@ JavaScript objects are containers for **named values**.
 对象的行为和特征：
 特征 ---- 属性 属性一般是名词，描述事物的特征
 行为 ---- 方法 方法一般是函数，描述对事物的行为和功能
-```
-
-
-
-### Access properties 
-
-获取属性的两种方式：
-
-```javascript
-//Access the object's properties by using the dot syntax.
-objectName.propertyName
-//or
-objectName['propertyName']
-//if property value is a function
-objectName["propertyName"]();
-```
-
-```javascript
-var person = {
-    name: "John Smith", //注意：尾部逗号分隔
-    sex: "male",
-    age: 25,
-    height: 180, //注意：最后一个属性的尾部不必写逗号
-    run:function (){
-        alert("Every Wednesday!");
-    }
-}; //别忘记这里的分号
-
-//objectName.propertyName;
-var x = person.name;
-//objectName['propertyName']
-var y = person['age'];
-
-var z = person['run']();
-//or var z = person["run"]();
-
-
-//注意：alert() function只接收一个参数，所以下面后面的Age不能输出
-alert("Name: "+x,"Age: "+y);
-
-//正确形式
-alert("Name: "+x);
-alert("Age: "+y);
-```
-
-JavaScript's built-in **length** ***property*** is used to count the number of characters in a property or string.
-
-```javascript
-//输出指定属性的属性值字符串长度，即该具体字符串里字符的个数
-//count the number of characters in an object's property
-alert(person.sex.length);
 ```
 
 
@@ -485,6 +441,57 @@ The **this** keyword refers to the **current object** , and **its value cannot b
        size: big
    }
    ```
+
+
+
+### Access properties 
+
+获取属性的两种方式：
+
+```javascript
+//Access the object's properties by using the dot syntax.
+objectName.propertyName
+//or
+objectName['propertyName']
+//if property value is a function
+objectName["propertyName"]();
+```
+
+```javascript
+var person = {
+    name: "John Smith", //注意：尾部逗号分隔
+    sex: "male",
+    age: 25,
+    height: 180, //注意：最后一个属性的尾部不必写逗号
+    run:function (){
+        alert("Every Wednesday!");
+    }
+}; //别忘记这里的分号
+
+//objectName.propertyName;
+var x = person.name;
+//objectName['propertyName']
+var y = person['age'];
+
+var z = person['run']();
+//or var z = person["run"]();
+
+
+//注意：alert() function只接收一个参数，所以下面后面的Age不能输出
+alert("Name: "+x,"Age: "+y);
+
+//正确形式
+alert("Name: "+x);
+alert("Age: "+y);
+```
+
+JavaScript's built-in **length** ***property*** is used to count the number of characters in a property or string.
+
+```javascript
+//输出指定属性的属性值字符串长度，即该具体字符串里字符的个数
+//count the number of characters in an object's property
+alert(person.sex.length);
+```
 
 
 
