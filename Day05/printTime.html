@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>printTime</title>
+    <script>
+        function printTime() {
+            var dt = new Date();
+            var year = dt.getFullYear(),
+                month = dt.getMonth() + 1,
+                day = dt.getDate(),
+                hour = dt.getHours(),
+                minute = dt.getMinutes(),
+                second = dt.getSeconds();
+            document.body.innerHTML = year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
+        }
+        setInterval(printTime, 1000);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

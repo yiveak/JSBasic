@@ -11,16 +11,16 @@
         function formatDate(dt) {
             // var dt = new Date();
             var year = dt.getFullYear(),
-                month = dt.getMonth(),
+                month = dt.getMonth() + 1,
                 day = dt.getDate(),
                 hour = dt.getHours(),
                 minute = dt.getMinutes(),
                 second = dt.getSeconds();
-            month > 10 ? month : "0" + month;
-            day > 10 ? day : "0" + day;
-            hour > 10 ? hour : "0" + hour;
-            minute > 10 ? minute : "0" + minute;
-            second > 10 ? second : "0" + second;
+            month = month > 10 ? month : "0" + month;
+            day = day > 10 ? day : "0" + day;
+            hour = hour > 10 ? hour : "0" + hour;
+            minute = minute > 10 ? minute : "0" + minute;
+            second = second > 10 ? second : "0" + second;
             return (year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second);
         }
         console.log(formatDate(new Date()));

@@ -339,6 +339,7 @@ JavaScript objects are containers for **named values**.
 获取属性的两种方式：
 
 ```javascript
+//Access the object's properties by using the dot syntax.
 objectName.propertyName
 //or
 objectName['propertyName']
@@ -384,34 +385,6 @@ alert(person.sex.length);
 
 
 
-### Object Methods
-
-An object **method** is a **property** that contains a **function definition**.
-
-> 一个对象的方法是一个属性，这个属性里包含了一个函数定义。
-
-***Methods are functions that are stored as object properties.***
-
-> method是一个funciton，这个function以对象的属性作为存储。
->
-> method是将对象属性作为存储的function。
-
-#### Access an object method
-
-```javascript	
-objectName.methodName();
-```
-
-eg.
-
-```javascript
-//output data
-document.write("This is some text.");
-//The write() function is actually a method of the document object.
-```
-
-
-
 ### The Object Constructor
 
 对象构造器
@@ -431,7 +404,7 @@ The **this** keyword refers to the **current object** , and **its value cannot b
 
 
 
-创建对象的三种方式：
+##### 创建对象的三种方式
 
 1. **调用系统的构造函数** 
 
@@ -459,7 +432,9 @@ The **this** keyword refers to the **current object** , and **its value cannot b
    obj.escape();
    ```
 
-   new关键字总是和构造函数一起使用
+   
+
+   ***new keyword is used for creating an instance of an object.***
 
    
 
@@ -513,6 +488,51 @@ The **this** keyword refers to the **current object** , and **its value cannot b
 
 
 
+### Object Methods
+
+An object **method** is a **property** that contains a **function definition**.
+
+> 一个对象的方法是一个属性，这个属性里包含了一个函数定义。
+
+***Methods are functions that are stored as object properties.***
+
+> method是一个funciton，这个function以对象的属性作为存储。
+>
+> method是将对象属性作为存储的function。
+
+#### Create an object method
+
+```javascript
+//create an object method
+methodName = function(){
+    code lines
+}
+```
+
+#### Access an object method
+
+```javascript	
+objectName.methodName();
+```
+
+eg.
+
+```javascript
+//output data
+document.write("This is some text.");
+//The write() function is actually a method of the document object.
+```
+
+A method is a function, belonging to an object. It can be referenced using  the this keyword.
+
+Defining methods is done inside the constructor function.
+
+The "this" keyword in the method means: the current objetc.
+
+An object's properties are similar to variables; methods are similar to functions.
+
+
+
 遍历对象的属性 ---- for-in循环
 
 ```javascript
@@ -545,27 +565,51 @@ for (var key in object){
 
 JavaScript的基本类型在栈中存储，object存储在堆中。
 
-#### 内置对象
 
-##### Math对象
+
+### 内置对象
+
+#### Math对象
+
+The Math object allows you to perform mathematical tasks, and include several properties.
+
+**Math has no constructor**, there is no need to create a Math object first.
 
 常用的Math属性与方法
 
-##### Date对象
+```javascript
+Math.PI; 
+Math.abs();
+Math.max();
+Math.min();
+Math.ceil(); //向上取整
+Math.floor(); //向下取整
+Math.pow(x, y); //x的y指数次幂
+Math.random(); //[0, 1)之间的伪随机数
+Math.round(x); //四舍五入
+Math.sqrt(x); //平方根
+```
+
+
+
+#### Date对象
+
+A date consists of a year, a month, a day, an hour, a minute, a second, and milliseconds.
+
+Date objects are static, rather than dynamic. The computer time is ticking, but date objects don't change, once created.
 
 默认获取当前系统的时间。通过创建`Date` 实例来处理日期和时间。
 
-> * Date.getDay(); //一周的第几天，0表示星期日
-> * Date.getDate(); //一月中的哪一日
-> * Date.getFullYear(); //年份
-> * Date.getMonth(); //月份，0表示1月
-> * Date.getHours(); //小时数
-> * Date.getMinutes(); //分钟数
-> * Date.getSeconds(); //秒数
-> * Date.getTime(); //格林威治时间
+##### Create a Date Object
 
 ```javascript
+//Using new Date(), create a new date object with the current date and time
 var dt = new Date();
+
+//or, the other way to initialize dates allow for the creation of new date object from the specified date and time. ---- 指定日期时间
+new Date(milliseconds);
+new Date(dataString);
+new Date(year, month, day, hours, minutes, seconds, milliseconds)
 
 * console.log(dt.toString());
 
@@ -582,11 +626,137 @@ var now = + new Date(); //Date对象的一种特殊的写法，只适用于Date�
 
 
 
-#### Array对象
+##### Date Methods
+
+> * Date.getDay(); //一周的第几天，0表示星期日
+> * Date.getDate(); //一月中的哪一日
+> * Date.getFullYear(); //年份
+> * Date.getMonth(); //月份，0表示1月
+> * Date.getHours(); //小时数
+> * Date.getMinutes(); //分钟数
+> * Date.getSeconds(); //秒数
+> * Date.getTime(); //格林威治时间
 
 
 
 
+
+
+
+
+
+#### Array对象(Core Objects)
+
+Arrays store multiple values in a single variable.  //注意这里的Array表示Array对象
+
+An array is **a special type of object**.
+
+An array uses **numbers** to access its elements, and an object uses **names** to access its members.
+
+##### Create an Array
+
+```javascript
+//1、关键字new
+//通过new Array()构造器创建一个Array实例对象
+var arr = new Array("HTML", "CSS", "JavaScript", "Python");
+
+//or, you can also declare an array, tell it the number of elements it will store, and add the elements later.
+var arr2 = new Array(3);
+arr2[0] = "C";
+arr2[1] = "Perl";
+arr2[2] = "PHP";
+
+//or, JavaScript arrays are dynamic, so you can declare an array and not pass any arguments with the Array() constructor. You can add the elements dynamically(add as many as you need to).
+var arr3 = new Array();
+arr3[0] = "Visual Bacic";
+arr3[1] = "C#";
+arr3[2] = "Ojective-C";
+arr3[3] = "R";
+
+//2、字面量 ---- Array Literal 推荐的方式？
+//For greater simplicity, readability, and excution speed, you can do this way.
+var arr4 = ["SQL", "Go", "Ruby"];
+```
+
+##### Accessing an Array
+
+You refer to an array element by referring to the **index number** written in square brackets.
+
+```javascript
+var course = arr[0]; //"HTML"
+arr[3] = "Java"; 
+console.log(arr); //原来的数组中某个值被改变了
+
+//如果尝试访问超过该数组的索引号，则返回的是undefined
+console.log(arr[9]);
+```
+
+##### Array Properties &Methods
+
+* The length Property: it returns the number of its elements. ---- 最最常用的
+
+  > ​	An array has the "length" property , it means that an array is an object.
+
+* Combining Arrays: JavaScript's concat() method allows you to join arrays and create an entirely new array. 组合数组
+
+  ```javascript
+  var c1 = ["HTML", "CSS"];
+  var c2 = ["JavaScript"];
+  var c3 = c1.concat(c2); 
+  var c4 = c2.concat(c1);
+  console.log(c3);
+  console.log(c4); //两个数组的元素排列方式并不相同
+  ```
+
+##### Associative(关联、联合) Arrays
+
+虽然其他的编程语言里支持arrays with named indexes(**text instead of number**)，即所谓的关联数组，但在JS中并不支持。(In JS, arrays always use numbered indexes.)
+
+但，you still can use the named array syntax, which will produce an object. 
+
+尤其注意这是一个object！而不再作为一个数组。那么标准的数组属性与方法将产生错误的值，比如`person.length`的返回值是0。
+
+```javascript
+var person = []; //空数组
+person["name"] = "John";
+person["age"] = 45;
+person["height"] = 180;
+console.log(person["name"]);
+console.log(person.height);
+
+console.log(person.length);
+```
+
+It is better to use an object when you want the index to be a string(text).
+
+Use an array when you want the index to be a number.
+
+If you use a named index, JS will redefine the array to a standard object.
+
+
+
+
+
+## The DOM
+
+为了实现(完成)加载一个网页的HMTL，the browser builds the **Document Object Model** of that page, which is an object oriented(以...为目标，导向) model of its logical structure.
+
+The DOM of HTML document can be represented as a nested set of boxes.
+
+DOM Tree: HTML elements --- **nodes** --- Nodes can have **child** nodes, if on the same level are called **siblings**.
+
+```mermaid
+graph TB
+	document(Document)-->html(html标签)
+	html(html标签)---head(head标签)
+	html(html标签)---body(body标签)
+	head(head标签)---title(title标签)
+	body(body标签)---div(div标签)
+	div(div标签)---table(table标签)
+	div(div标签)---form(form标签)
+	
+	
+```
 
 
 
@@ -651,4 +821,20 @@ var now = + new Date(); //Date对象的一种特殊的写法，只适用于Date�
   > ```
   >
   > 也是同样地，不能overuse this method，因为这会阻止用户获取页面上的其他部分，直到关闭这个box。
+
+### setInterval()
+
+The setInterval() method calls a function or evaluates an expression at specified intervals (in milliseconds).
+
+以毫秒为单位间隔
+
+It will continue calling the function until `clearInterval()` is called or the window is closed.
+
+```javascript
+function myAlert(){
+    alert("Hello...");
+}
+//2个参数，前面是函数名(注意是函数名，不要跟小括号、参数什么的)或evaluates an expression，后面是间隔时间，1000毫秒=1秒
+setInterval(myAlert, 3000);
+```
 
