@@ -12,15 +12,29 @@
             var num1 = 1,
                 num2 = 1,
                 sum = 0;
-            //bug:when num < 3    
-            for (var i = 3; i <= num; i++) {
+            if (num == 1) {
+                sum = num1;
+            } else if (num == 2) {
                 sum = num1 + num2;
-                num1 = num2;
-                num2 = sum;
+            } else {
+                //when num >= 3 
+                var i = 0;
+                do {
+                    sum = num1 + num2;
+                    num1 = num2;
+                    num2 = sum;
+                    i++;
+                } while (i < num);
+                return sum - 1;
             }
             return sum;
         }
-        console.log(getSumOfFibonacci());
+        console.log(getSumOfFibonacci(1)); //1
+        console.log(getSumOfFibonacci(2)); //2
+        console.log(getSumOfFibonacci(3)); //4
+        console.log(getSumOfFibonacci(5)); //12
+        console.log(getSumOfFibonacci(6)); //20
+
     </script>
 </head>
 

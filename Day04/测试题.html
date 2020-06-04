@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试题</title>
+
+    <!-- 预解析：变量声明提前 -->
+    <script>
+        foo(); //Error: foo is not defined，然后这个<script>里line 12-line19不执行。
+        var foo = function () {
+            console.log("foo1");
+        }
+        foo();
+        var foo = function () {
+            console.log("foo2");
+        }
+        foo();
+    </script>
+
+    <!-- 预解析：函数声明提前 -->
+    <script>
+        foo(); //foo2
+        function foo() {
+            console.log("foo1");
+        }
+        foo(); //foo2
+        function foo() {
+            console.log("foo2");
+        }
+        foo(); //foo2
+        //分析：函数提升，后面的函数直接覆盖前面的函数
+    </script>
+
+    <!-- 预解析：函数声明提前的优先级>变量声明提前的优先级 -->
+    <script>
+        foo();
+        var foo = function () {
+            console.log("foo1");
+        }
+        foo();
+
+        function foo() {
+            console.log("foo2");
+        }
+        foo();
+        /*
+        预解析：
+        function foo(){
+            console.log("foo2");
+        }//foo(); //Line-16
+
+        var foo=function(){
+            console.log("foo1");
+        }
+        foo(); //Line-20
+
+        foo(); //Line24
+        */
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

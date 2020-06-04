@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简单类型和复杂类型</title>
+    <script>
+        //值类型, 引用类型
+        /*
+        原始数据类型:number, string, boolean, null, undefined, symbol, object
+        基本类型(值类型):number, string, boolean, symbol
+        复杂类型(引用类型):object
+        空类型:null, undefined
+
+        值类型, 即基本类型的存储空间 ---- 栈
+        引用类型,即复杂类型的存储空间 ---- 栈+堆:堆里存储的是对象本身, 而栈:存储的是该对象的索引地址,即引用
+
+        值类型之间传递的是值
+        引用类型之间传递的是引用,即对象的索引地址
+        */
+
+        // //测验1 ---- 值类型之间, 传递值
+        // function f1(x) {
+        //     x = 100;
+        // }
+        // var num = 10;
+        // f1(num); //num变量里的值10传递给函数f1的形参x, 函数内
+        // console.log(num); //10
+
+
+        //测验2 ---- 引用类型之间, 传递引用
+        var obj = {
+            name: "Eve"
+        };
+
+        function f2(obj2) {
+            obj2.name = "Dasha"
+        }
+        console.log(obj.name); //Eve
+        f2(obj); //将obj变量里存储的引用值传到了f2函数的形参obj2里,即只是将引用复制到obj2这个变量里头,那么这个在栈中的obj2变量也能指向{name="Eve"}这个对象所在的堆空间位置
+        //接着,下一行的代码改变了原对象的name属性的属性值.
+        console.log(obj.name); //Dasha
+
+
+        // //测验3
+        // var num = 50;
+        // function f1(num){
+        //     num = 60;
+        //     console.log(num); //60
+        // }
+        // f1(num); //f1(50),将50这个值传进了f1函数里名为num的形参里头,运行下行代码,形参num的值重新被赋值为60,那么运行结果:60
+        // console.log(num); //50
+
+        //测验4
+        var num1 = 99;
+        var num2 = 66;
+
+        function f1(num, num1) {
+            num = 100;
+            num1 = 100;
+            num2 = 100;
+            console.log(num);
+            console.log(num1);
+            console.log(num2);
+        }
+        f1(num1, num2); //f(99, 66),
+        /*
+        形参名  形参名num1不要跟实际的num1混淆
+        num     num1    num2(实参)
+        99       66      66     //Line58
+        100      66      66     //Line59
+        100      100     66     //Line60 
+        100      100     100    //Line61
+        所以输出的是:100, 100, 100
+        */
+        console.log(num1); //99
+        console.log(num2); //100
+        console.log(num); //Uncaught ReferenceError: num is not defined ---- 外部尝试访问函数内的变量
+
+        //测验5
+        function Person(name, age, salary) {
+            this.name = name;
+            this.age = age;
+            this.salary = salary;
+        }
+
+        function f1(person) {
+            person.name = "Changed";
+            person = new Person("Newone", 99, 10000);
+        }
+
+        var p = new Person("Orgin", 28, 6666); //在栈中p变量存储了指向堆空间{"Orgin"}这个对象的引用
+        console.log(p.name); //获取在栈中变量p存储的引用指向堆空间里对象的name属性的属性值,即输出的是:"Orgin"
+        f1(p); //将栈中变量p存储的引用传递到栈中另一个变量名为person的里头,即栈中变量person中存储的引用是指向的{"Orgin"}对象
+        //line 89执行,其中{"Orgin"}对象的name属性值被重新赋值为 "Changed"
+        //line 90执行, 实例化一个新的对象,然后栈中变量person里存储的引用改变, 转而指向这个新实例化的对象
+        console.log(p.name); //所以,这里输出的是:"Changed"
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

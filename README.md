@@ -297,3 +297,276 @@ Tips：只有`0`、`''`、`null`、`undefined`、`NaN`、`false`转换后的值�
 操作数——operation
 
 表达式：由操作数、操作符组成的式子，会有值。
+
+
+
+
+
+## Objcts
+
+JavaScript variable are **containers** for data values. 
+
+**Objects are variables too**, they can contain many values.
+
+ Think of an object as a list of  values: **name: value** pairs --- 名值对。
+
+`name : value` 是对象的属性以及属性值。
+
+JavaScript objects are containers for **named values**.
+
+|     name      |         value         |
+| :-----------: | :-------------------: |
+| Property 属性 | Property Value 属性值 |
+|     name      |      John Smith       |
+|      sex      |         male          |
+|      age      |          25           |
+|    height     |          180          |
+
+
+
+### Access properties 
+
+获取属性的两种方式：
+
+```javascript
+objectName.propertyName
+//or
+objectName['propertyName']
+```
+
+```javascript
+var person = {
+    name: "John Smith", //注意：尾部逗号分隔
+    sex: "male",
+    age: 25,
+    height: 180, //注意：最后一个属性的尾部不必写逗号
+    run:function (){
+        alert("Every Wednesday!");
+    }
+}; //别忘记这里的分号
+
+//objectName.propertyName;
+var x = person.name;
+//objectName['propertyName']
+var y = person['age'];
+
+var z = person['run']();
+//or var z = person["run"]();
+
+
+//注意：alert() function只接收一个参数，所以下面后面的Age不能输出
+alert("Name: "+x,"Age: "+y);
+
+//正确形式
+alert("Name: "+x);
+alert("Age: "+y);
+```
+
+JavaScript's built-in **length** ***property*** is used to count the number of characters in a property or string.
+
+```javascript
+//输出指定属性的属性值字符串长度，即该具体字符串里字符的个数
+//count the number of characters in an object's property
+alert(person.sex.length);
+```
+
+
+
+### Object Methods
+
+An object **method** is a **property** that contains a **function definition**.
+
+> 一个对象的方法是一个属性，这个属性里包含了一个函数定义。
+
+***Methods are functions that are stored as object properties.***
+
+> method是一个funciton，这个function以对象的属性作为存储。
+>
+> method是将对象属性作为存储的function。
+
+#### Access an object method
+
+```javascript	
+objectName.methodName();
+```
+
+eg.
+
+```javascript
+//output data
+document.write("This is some text.");
+//The write() function is actually a method of the document object.
+```
+
+
+
+
+
+
+
+### The Object Constructor
+
+对象构造函数
+
+***The Standard way to create an "object type" is to use an object constructor function.***
+
+```javascript
+function cat(name, age, color){
+    this.name = name;
+    this.age = age;
+    this.color = color;
+}
+//function (cat) is an object constructor, which takes parameters and assigns them to the object properties.
+```
+
+The **this** keyword refers to the **current object** , and **its value cannot be changed**.
+
+
+
+创建对象的三种方式：
+
+1. **调用系统的构造函数** 
+
+   ```javascript
+   //var 变量名 = new Object(); Object是系统的构造函数
+   //实例化对象
+   var obj = new Object();
+   //对象有特征：属性和行为————方法
+   
+   //添加属性————对象名.对象属性名 = 对象该属性名的属性值 ————name: value 名值对
+   obj.name = "The Doctor";
+   obj.age = 1000000;
+   obj.sex = "other";
+   
+   //添加方法————对象.属性名 = 函数
+   obj.escape = function (){
+       alert("LISTEN");
+   };
+   
+   //获取指定对象的某个属性的属性值
+   alert("My name is "+obj.name);
+   
+   //调用指定对象某个属性的行为？
+   //调用指定对象的指定方法
+   obj.escape();
+   ```
+
+   
+
+2. **自定义构造函数**（工厂模式）
+
+3. **字面量的方式** ---- the object literal( or initializer) syntax
+
+   This allows you to create only **a  single object**.
+
+   ```javascript
+   var dog = {
+       name: "cookie",
+       age: 5,
+       color: brown,
+       size: big
+   }
+   ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### JavaScript提供三种类型的popup box
+
+* **Alert()** ---function
+
+  > An alert box is used when you want to ensure that information gets through to the user. When an alert box pops up, the user **must click OK to proceed**.
+  >
+  > The alert **function** takes **a single parameter**, which is the text displayed in the popup box.
+  >
+  > ```javascript
+  > alert("Do you really want to leave this page?");
+  > alert("1\n+\n2\n=\n3");
+  > ```
+  >
+  > 
+
+* **Prompt()** ---method
+
+  > A prompt box is often used to have the user input a value before entering a page. 获取用户的输入
+  >
+  > * prompt  is for getting input from the user.
+  >
+  > 用户在输入数据后必须点击确定或者取消以进行下一步的进程。
+  >
+  > * If the user clicks OK, the box **return the input value**。
+  > * 如果用户不输入任何数据，直接点击取消，那么the box **returns null**。
+  >
+  > The prompt() **method** takes **two parameters** : //注意：prompt()是method，而不是function。
+  >
+  > * 第一个是**the label**，which you want to display in the text box. //通常写第一个参数就可
+  >
+  > * 第二个是**a default string** to display in the text box(**optional**).
+  >
+  >   ```javascript
+  >   var getPhoneNumber = prompt("Please enter your phone number","+1");
+  >   alert("You phone number is: "+getPhoneNumber);
+  >   ```
+  >
+  > 注意：Do not overuse this method, because it prevents the user from accessing other parts of the page until the box is closed.
+
+* **Confirm** --- method , return true or false.
+
+  > A confirm box is often used to have the user verify or accept something. /让用户确认其输入或者是accept something.
+  >
+  > 同样地，也必须要求用户在输入后点击确定或者取消，或不输入任何数据点击取消，以进行一下步的进程。
+  >
+  > * If the user clicks OK, the box returns **true** 
+  > * if the user clicks Cancel, the box return **false**.
+  >
+  > ```javascript
+  > var result = confirm("Do you really want to leave this page?")
+  > if (result==true){
+  >     alert("Thanks for visiting.");
+  > } else {
+  >     alert("Thanks for staying with us.");
+  > }
+  > 
+  > ```
+  >
+  > 也是同样地，不能overuse this method，因为这会阻止用户获取页面上的其他部分，直到关闭这个box。
+

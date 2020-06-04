@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>json</title>
+    <script>
+        /*
+        json是一个对象，
+        包含2个方法：
+        1. 用于解析JavaScript Object Notation(JSON)的parse()方法
+        2. 将对象/值转换为JSON字符串的stringify()方法
+        除了这2个方法，JSON这个对象本身并没有其他的作用，也不能被调用或者作为构造函数调用
+
+        目的：序列化对象、数组、数值、字符串、布尔值、null
+        
+        var json = {
+            "属性名":"属性值"，
+            "name1":"value1",
+            "name2":"value2",
+            "name3":"value3"
+        }
+        */
+
+        var json = {
+            "name":"Ali",
+            "age": "20",
+            "sex":"female",
+            "favColor":"yellow",
+            "favFood":"Milk"
+        }
+
+        //遍历json ---- 通过for-in循环
+        for(var key in json) {
+            console.log(json[key]);
+            console.log(json.key);
+            console.log(json['key']);
+            /*分析：
+            
+            */
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

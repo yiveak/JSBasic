@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RGB值</title>
+    <script>
+        //随机产生一个十六进制的颜色值
+        //封装成一个函数
+
+        function getColor() {
+            //十六进制颜色值以字符串形式输出
+            var str = '#';
+            //通过一个数组存储十六进制颜色值的单个元素
+            var arr = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"];
+            //十六进制颜色值有6个数字或字符组成
+            for (var i = 0; i < 6; i++) {
+                //通过索引数组的下标找到对应的值
+                var index = parseInt(Math.random() * 16);
+                str += arr[index];
+            }
+            return str;
+        }
+        console.log(getColor());
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

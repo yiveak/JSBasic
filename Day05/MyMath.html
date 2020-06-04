@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyMath</title>
+    <script>
+        //自定义一个对象,实现系统Math的求最小值的方法
+        function MyMath() {
+            //添加一个求最小值的方法
+            this.getMin = function () {
+                //通过伪数组arguments获取第一个参数值
+                var min = arguments[0];
+                for (var i = 0; i < arguments.length; i++) {
+                    if (min > arguments[i]) {
+                        min = arguments[i];
+                    }
+                }
+                return min;
+            };
+        }
+
+        //实例化一个对象
+        var min = new MyMath();
+        //调用对象的方法
+        var result = min.getMin(2, 3, 4, 5, 6, 1);
+        console.log(result);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

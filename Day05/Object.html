@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object</title>
+    <!-- 
+        
+        对象：分析对象的特性（特征）、行为
+        property---属性、属性值---property values
+        
+    -->
+
+    <!-- 创建对象的三种方式 -->
+
+    <!-- 调用系统的构造创建对象，即var objectName = new Object() -->
+    <script>
+        var dog = new Object();
+        dog.name = "DaHuang";
+        dog.age = 3;
+        dog.weight = 12.5;
+        dog.color = "yellow";
+        dog.favFood = "大骨头";
+        dog.walk = function () {
+            alert("走十步直接躺。。");
+        }
+        dog.walk();
+
+        // instanceof Object，即验证该变量是不是内置对象类型
+        //返回值是ture or false，ture表示该变量是一个内置对象，false则不是
+        alert("dog这个对象的类型是：" + (dog instanceof Object));
+
+        //instanceof 自定义对象名，即验证该实例的对象是不是该自定义对象的类型
+    </script>
+
+    <!-- 
+        在当前对象的方法中能访问当前对象属性的属性值
+        通过this关键字表示当前对象
+    -->
+
+    <!-- 一次性创建多个对象————构造函数的方式 constructor -->
+    <!-- 通过自定义构造函数创建对象 -->
+    <!-- 工厂模式 -->
+    <script>
+        //将创建对象的代码封装在一个函数中
+        // function createObject() {
+        //     //创建对象
+        //     var obj = new Object();
+        //     //添加属性
+        //     obj.name = "Claire";
+        //     obj.sex = "female";
+        //     obj.age = "16";
+        //     //添加行为、方法
+        //     obj.shuichi = function () {
+        //         alert("わたしわ " + this.name);
+        //         alert("We are part of each other.");
+        //     }
+        //     return obj;
+        // };
+        // 
+        // var gleipnir = createObject();
+        // gleipnir.shuichi();
+
+
+        //Object constructor 
+        /*
+        Line 77代码的运行时所进行的操作：
+        1. 在内存中申请一块空闲空间，存储创建的新对象
+        2. 将this设置为当前对象
+        3. 设置对象的属性和方法的值
+        4. 把this这个对象返回
+        */
+        function Person(name, sex, age) {
+            this.name = name;
+            this.sex = sex;
+            this.age = age;
+            this.outputInfo = function () {
+                console.log("Hi, my name is " + this.name + ".");
+                console.log("I am " + this.age + " old.");
+            }
+        }
+        //通过调用自定义构造函数创建对象————var objectName = new SelfConstructorNanme(para1, para2, para3...);
+        //实例化对象
+        var objTest = new Person("Finch", "Male", 45);
+        objTest.outputInfo();
+    </script>
+
+    <!-- 自定义构造函数创建对象的练习 -->
+    <script>
+        //创建一个图片对象，有宽高、大小（4M），图片可以展示内容
+        function Img(width, height, size) {
+            this.width = width;
+            this.height = height;
+            this.size = size;
+            this.showInfo = function () {
+                console.log("我是啥都不想展示的图片。。");
+            }
+        }
+        var imgTest = new Img(200, 300);
+        // var imgTest = new Img(200, 300); //如果少传一个值，那么那个未被传到值的变量的数据类型是undefined，其值也是undefined
+        imgTest.showInfo();
+
+        //创建一个🐱的对象，有颜色、体重、年龄，这🐱跟狗打架，而且抓老鼠
+        function Cat(color, weight, age) {
+            this.color = color;
+            this.weight = weight;
+            this.age = age;
+            this.beat = function () {
+                console.log("本🐱岁月静好，从不找🐕打架！");
+            }
+            this.catchMouse = function () {
+                console.log("让我这只汤姆🐱抓老鼠？呵呵呵...");
+            }
+        }
+        var catTest = new Cat("grey", 18, 5);
+        catTest.beat();
+        catTest.catchMouse();
+
+        //函数名大写开头，通常
+        function Phone(brand, price, capacity, height, width, depth, weight, display) {
+            this.brand = brand;
+            this.price = price;
+            this.capacity = capacity;
+            this.height = height;
+            this.width = width;
+            this.depth = depth;
+            this.weight = weight;
+            this.display = display;
+            this.sendMsg = function () {
+                console.log("Hello, iPhone SE.")
+            }
+        }
+
+        //实例函数，即创建一个对象
+        var phone = new Phone("Apple", 2999, 64, 138.4, 67.3, 7.3, 148, 4.7)
+
+        //添加一个属性
+        phone.chip = "A13 Bionic Chip";
+
+        //调用对象的方法
+        phone.sendMsg();
+        //or phone["sendMsg"]();
+    </script>
+
+    <!-- 通过字面量的方式创建一个对象 -->
+    <!-- 缺点：一次性 -->
+    <script>
+        var chicken = {
+            number: 29,
+            weight: 3,
+            color: "black",
+            fly: function () {
+                console.log("火鸡总动员是我辈楷模。");
+            }
+        };
+
+        chicken.number = 30
+        console.log("The chicken's number is " + chicken.number);
+        console.log(chicken.color);
+        chicken.masterWho = "John";
+        console.log("Master of the chicken is " + chicken.masterWho);
+        //删除对象的一个属性
+        delete chicken.color;
+        console.log(chicken.color);
+
+        //另一种调用对象属性的方式 --- []
+        console.log("这只鸡的重达" + chicken["weight"] + "斤");
+        chicken["fly"]();
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
