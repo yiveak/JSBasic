@@ -18,7 +18,7 @@
         b = temp;
         console.log("a =", a, "b =", b);
 
-        //方式2：值的加减
+        //方式2：值的加减，借助第三方变量
         var x = 3;
         var y = 7;
         console.log("x =", x, "y =", y);
@@ -27,7 +27,14 @@
         y = sum - x;
         console.log("x =", x, "y =", y);
 
-        //方式3：位运算
+        //方式3：不借助第三变量的值的加减
+        var m = 1, n = 5;
+        m = m-n;
+        n = m+n;
+        m = n-m;
+        console.log(m, n);
+
+        //方式4：位运算
     </script>
 </head>
 

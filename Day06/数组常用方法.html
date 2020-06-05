@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array对象</title>
+
+    <!-- 
+    1. Array.isArray();
+    2. concat(数组1,数组2,数组3, ...); //将多个数组合成一个新的数组 concatenate 使连接
+    3. every(函数); //筛选数组元素
+    4. filter(); //选取数组元素
+    -->
+
+
+    <!-- 判断是否是数组类型的2种方式 -->
+    <!-- 确定传递的值是否是一个Array -->
+    <script>
+        //方式1. instance of
+        var arr1 = new Array();
+        //or var arr1 = [];
+        console.log(arr1 instanceof Array); //true
+        var arr2 = {}; //{}表示空对象
+        console.log(arr2 instanceof Array); //false
+
+        //方式2. Array.isArray() ---- 静态方法, 传入的参数是数组名
+        console.log(Array.isArray(arr1));
+        console.log(Array.isArray(arr2));
+    </script>
+
+
+    <!-- Array.from() -->
+    <!--  -->
+    <script>
+        //从一个类似数组、或者可迭代对象，创建一个新的、浅拷贝的数组实例
+        console.log(Array.from("football")); //["f", "o", "o", "t", "b", "a", "l", "l"]
+        console.log(Array.from(['a', 'b', 'c'])); //["a", "b", "c"]
+        console.log(Array.from(123)); //[],空数组
+    </script>
+
+
+    <!-- every() -->
+    <!-- 用来进行筛选数组中的元素 -->
+    <script>
+        /*
+        检测一个数组的里每个元素是否都能通过某个指定函数的测试，返回值true or false
+        但，如果是一个空数组调用该方法，那么此方法在一切情况都返回的是true
+        语法：arr.every(callback[,thisArg])
+        callback：用来测试每个数组元素的函数
+        而，这个函数里接收3个参数：
+        1. element ----元素的值，用于测试的当前元素值
+        2. index(optional) ---- 索引值, 用于测试的当前元素值的索引值
+        3. array(optional) ---- 调用every的当前数组, 通常默认不写
+        */
+        var arr = [1, 2, 3, 10, 100];
+        var result = arr.every(function (ele, index) { //ele：elements, index：索引
+            // console.log(arguments.length); //输出当前函数的参数个数
+            return ele > 1;
+        });
+        console.log(result); //false 只有当数组中的每个元素都通过了函数测试，才能返回true, 否之则都是false。
+    </script>
+
+    <!-- filter() -->
+    <script>
+        //让数组中每个元素经过指定函数的测试，其中测试合格的元素将作为一个新的数组返回
+        var arr = ['1', 'c', 3, 't', 9];
+        var newArr = arr.filter(function(ele){
+            // if(ele instanceof String){
+            //     return ele;
+            // }
+            return (ele instanceof String);
+        });
+        console.log(newArr);
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 数组、字符串相互转换 -->
+    <!-- join() -->
+    <script>
+        var a = [1, 2, 3, 4, 5];
+        // var b = a.join(); //1,2,3,4,5
+        // var b = a.join(""); //12345
+        var b = a.join("--"); //1--2--3--4--5
+        console.log(a);
+        console.log("b = " + b);
+        console.log("b的类型是：" + typeof b);
+    </script>
+
+    <!-- split() -->
+    <script>
+        //split(要切掉的字符串，切割后要留下的元素个数);
+        var a = [1, 2, 3, 4, 5];
+        var b = (a.join('**')).split("**", 4);
+        console.log(a);
+        console.log(b);
+        // console.log("b = " + b);
+        console.log("b的类型是：" + typeof b); //object
+        console.log("b中元素的类型：" + typeof b[0]); //string
+    </script>
+
+
+    <!-- 数组排序 -->
+    <!-- reverse() 反转，在原数组上操作，不新建数组-->
+    <script>
+        var a = [1, 2, 3, 4, 5];
+        // var b = a.reverse();
+        console.log("a = " + a);
+        console.log("a = " + a.reverse());
+        // console.log("b = " + b); //因为直接在原数组上操作，不必通过声明变量b
+    </script>
+    <!-- sort()，排序的方法通过其参数来决定。 -->
+    <script>
+        //如果省略参数，则sort()方法将按照默认的规则对数组进行排序
+        //这个参数是一个比较两个元素值的闭包
+        var a = [3, 2, 5, 11, 40];
+        console.log("a = " + a);
+
+        // //1. 默认排序
+        // console.log("a默认排序：" + a.sort()); //只比较的是第一个字符。。。
+        // console.log("a = " + a);
+        // console.log(a);
+
+        // //2. 定义一个排序函数
+        // function getMinToMax(x, y) {
+        //     return x - y; //为什么这个函数可以实现从小到大？
+        //     // return x + y; //返回的是仍是原数组，不发生排序
+        // }
+        // console.log("a定义后的排序：" + a.sort(
+        //     getMinToMax));
+        // //注意这里传入的函数名，如果传入调用函数的形式，则报错 “Array对象.html:56 Uncaught TypeError: The comparison function must be either a function or undefined”
+        // console.log("a = " + a);
+
+        console.log("直接在sort()定义" + a.sort(function (x, y) {
+            return x - y;
+        }));
+        // console.log("直接在sort()定义" + a.sort((function (x, y) {
+        //     return x - y;
+        // })()));
+    </script>
+
+
+    <!-- concat()，合并两个或多个数组，不改变现有的数组，返回一个新的数组对象。 -->
+    <script>
+        //将参数追加到指定数组中，形成一个新的数组
+        //语法：var new_array = old_array.concat(value1,[, value2[,...[, valueN]]]);
+        var a = [1, 3, 4];
+        var b = ['a', 'x', 'f'];
+        console.log(a.concat(b));
+    </script>
+
+
+    <!-- 获取子数组 -->
+    <!-- slice(), 不改变原数组，返回一个新的数组对象。这个对象是由begin, end决定的原数组浅拷贝，包括begin，不包括end -->
+    <script>
+        var animals = ["ant", "bison", "camel", "duck", "dog", "chicken", "elephant"];
+        console.log(animals.slice()); //不传入参数，原数组整个输出
+        console.log(animals.slice(1, 3)); //["bison", "camel"]
+        console.log(animals.slice(animals.length - 4)); //[]
+        console.log(animals.slice(animals.length - 1, animals.length + 1)); // ["elephant"]
+        console.log(animals.slice(animals.length - 1)); //["elephant"]
+        console.log(animals.slice(animals.length)); //空数组
+        //参数小于0，从后往前
+        console.log(animals.slice(-1)); //["elephant"], -1是最后一个元素的索引
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

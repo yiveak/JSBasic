@@ -362,6 +362,10 @@ The **this** keyword refers to the **current object** , and **its value cannot b
 
 ##### 创建对象的三种方式
 
+在JavaScript中，对象是由new运算符生成的，生成对象的函数被称为类（或称构造函数、对象类型）。
+
+生成的对象 ---- 类的实例，简称为对象。
+
 1. **调用系统的构造函数** 
 
    ```javascript
@@ -448,13 +452,21 @@ The **this** keyword refers to the **current object** , and **its value cannot b
 
 获取属性的两种方式：
 
+* 通过. 、[""]
+
 ```javascript
 //Access the object's properties by using the dot syntax.
 objectName.propertyName
-//or
+//or 当使用[]访问对象的属性时，则可以使用字符串下标来表示属性，即下标字符串是对象的属性名
 objectName['propertyName']
-//if property value is a function
+
+//if property value is a function,该属性被称为该对象的方法，使用小括号访问该方法
+objectName.propertyName();
+//or
 objectName["propertyName"]();
+
+//if property value is an object,可以设计嵌套对象，通过连续的点运算符.来访问内部对象
+
 ```
 
 ```javascript
@@ -534,7 +546,7 @@ A method is a function, belonging to an object. It can be referenced using  the 
 
 Defining methods is done inside the constructor function.
 
-The "this" keyword in the method means: the current objetc.
+The "this" keyword in the method means: the current object.
 
 An object's properties are similar to variables; methods are similar to functions.
 
@@ -646,13 +658,13 @@ var now = + new Date(); //Date对象的一种特殊的写法，只适用于Date�
 
 
 
-
-
-
-
-
-
 #### Array对象(Core Objects)
+
+对象(Object)是无序数据的集合 ---- 无序
+
+数组(Array)是有序数据的集合 ---- 有序
+
+对象、数组可以相互转换。
 
 Arrays store multiple values in a single variable.  //注意这里的Array表示Array对象
 
@@ -664,7 +676,7 @@ An array uses **numbers** to access its elements, and an object uses **names** t
 
 ```javascript
 //1、关键字new
-//通过new Array()构造器创建一个Array实例对象
+//通过new和构造函数Array()创建一个Array实例对象
 var arr = new Array("HTML", "CSS", "JavaScript", "Python");
 
 //or, you can also declare an array, tell it the number of elements it will store, and add the elements later.
@@ -739,6 +751,108 @@ It is better to use an object when you want the index to be a string(text).
 Use an array when you want the index to be a number.
 
 If you use a named index, JS will redefine the array to a standard object.
+
+
+
+##### :star:操作数组
+
+* 使用`delete` 删除数组元素，其数组的长度不改变，即数组的length属性值不变。
+
+  > 当改变数组的长度时，即给数组的length属性重新赋值时，数组会自动地在末尾增加或删除元素，增加的元素其值为undefined。
+
+* 使用`push()` 和`pop()` 方法操作数组 ---- 尾部
+
+  > * `push()` ---- 在数组的末尾，插入一个或多个元素
+  >
+  >   ```javascript
+  >   var arr = new Array(1, 2, 3, 4)
+  >   arr.push(5, 6, 7); //并返回操作后数组的长度
+  >   console.log(arr); //[1, 2 ,3, 4, 5, 6]
+  >   //如果push()不传值，那么默认返回数组的最后一个元素
+  >   console.log(arr.push());
+  >   ```
+  >
+  >   
+  >
+  > * `pop()` ---- 从数组的末尾，依次将元素删除
+  >
+  >   ```javascript
+  >   var arr = new Array('a', 'b', 'c', 10);
+  >   arr.pop();
+  >   console.log(arr); //['a', 'b', 'c']
+  >   ```
+
+* 使用`unshift()` 和`shift()` 方法操作数组 ---- 头部
+
+  > * `unshift()` 在数组的头部，增加元素
+  >
+  > * `shift()` 从数组的头部，删除第一个元素，并返回该元素的值。---- 用来更改数组的长度
+  >
+  >   ```javascript
+  >   var arr = new Array(1,2,4);
+  >   arr.unshift(0); //并返回操作后数组的长度
+  >   
+  >   console.log(arr);
+  >   
+  >   arr.unshift(-2,-3);
+  >   console.log(arr); //[-2, -3, 0, 1, 2, 4] 不是[-3, -2, 0, 1, 2, 4]
+  >   
+  >   arr.shift();
+  >   console.log(arr);
+  >   arr.shift(3); //仍旧按arr.shift()来执行，直接忽略了传入的3
+  >   console.log(arr);
+  >   ```
+
+* 使用`splice()` 方法 ---- 通用的，在数组指定位置除、插入元素的方法
+
+  > 3个参数
+  >
+  > * para1：指定插入的起始位置，start from 0
+  > * para2：指定删除元素的个数
+  > * para3：插入的具体元素
+  >
+  > ```javascript
+  > var a = new Array(1, 2, 3, 4, 5, 6, 7);
+  > //传入2个参数
+  > var b = a.splice(2, 3); //从0开始索引
+  > document.write(a+"<br />");
+  > document.write(b+"<br />");
+  > 
+  > //传入3个参数
+  > var c = a.splice(1, 2, -2, -4, 9, 19);
+  > document.write(a+"<br />");
+  > document.write(c+"<br />");
+  > ```
+
+* `join()` ---- 将数组转换成多种形式的字符串输出，一个参数，该参数用来定义合并元素的连字符，默认逗号。
+
+* `split()` ---- 将**字符串**分割为一个数组，2个参数，第一个参数指定分隔符，第二个参数指定返回数组的长度。
+
+* `reverse()`
+
+* `slice()`
+
+* `sort()`
+
+* `splice()`
+
+* `split()`
+
+* `toLoacalString()`
+
+* `toString()`
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

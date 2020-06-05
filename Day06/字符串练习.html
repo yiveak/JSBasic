@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串练习</title>
+
+    <!-- 练习1 -->
+    <script>
+        //输出"abdjkhrtuyiufdfdo"中的"yi"字符串
+        var str = "abdjkhrtuyiufdfdo";
+
+        //获取字符串yi在该字符串中第一次出现的索引号，也就是先找到字符串yi
+        //同时, 这个索引指向的字符y, 而字符i紧跟其后，即+1
+        //有了索引后，通过该索引指定字符的输出 ---- slice()
+        // var key = prompt("Please enter a character")
+        var key = "yi";
+        str.indexOf(key);
+        str.indexOf(key) + 1;
+        console.log(str.indexOf(key));
+        console.log(str.slice(str.indexOf(key), str.indexOf(key) + 2));
+        console.log(str.substring(str.indexOf(key), str.indexOf(key) + 2));
+        console.log(str.substr(str.indexOf(key), 2));
+    </script>
+
+    <!-- 练习2 -->
+    <script>
+        //输出"hello wod odd ott fbo nhy"这个字符串中所有字符o出现的位置
+
+        var str = "hello wod odd ott fbo nhyo";
+
+        //先找到第一个字符o的索引，然后往后循环比较是否是字符o, 最终找到所有的字符o
+        //这个循环结束的条件就是，索引到达了最后一个字符，而最后一个字符的索引是str.length-1，
+
+        var key = 'o';
+        //通过indexOf()获取在字符串中指定字符或字符串的索引
+        for (var i = str.indexOf(key); i < str.length; i++) {
+            if (str[i] == 'o') {
+                console.log(i);
+            }
+        }
+
+
+        //another way
+
+        var index = 0;
+        while ((index = str.indexOf(key, index)) != -1) { //判断索引是否到了最后一个字符，即是否等于-1
+            console.log(index);
+            // index+=1;
+            index += key.length;
+        }
+    </script>
+
+
+    <!-- 练习3 -->
+    <script>
+        //"whatOareYyouYnoYshaHleiHoHmyHgod"这个字符串中每个字符出现的次数
+
+        var str = "whatOareYyouYnoYshaHleiHoHmyHgod";
+        //先将字符串大写或小写
+        str = str.toLocaleLowerCase();
+        console.log(str);
+
+        //遍历整个字符，遇到相同的字符，累加1
+
+        //以键值对的方式存储，即以字符：字符出现的次数这样的形式，添加到对象中，然后遍历这个对象输出
+
+        var obj = {}; //创建一个空对象
+        //通过判断一个对象的属性(当前环境下，就是字符)是否存在，如果存在，则该属性(字符)对应的属性值累加1
+        //那么，如何索引到字符串的单个字符？即获取这个对象的属性值 string.charAT(index)
+        for (var index = 0; index < str.length; index++) {
+            //obj这个对象中是否已经存在这个属性
+            if (obj[str.charAt(index)]) {
+                obj[str.charAt(index)]++;
+            } else {
+                obj[str.charAt(index)] = 1;
+            }
+
+        }
+
+        console.log(obj);
+
+        //遍历obj这个对象的属性，将其输出 for-in
+        for (var key in obj) {
+            console.log(key + "出现了" + obj[key] + "次");
+        }
+    </script>
+
+    <!-- 练习3的扩展练习 -->
+    <script>
+        //简转繁
+        var arr = ["你=伱", "说=詤", "我=莪", "好=恏", "帅=帅", "气=气", "的=的", "杨=楊", "哥=哥"];
+
+        // var key = prompt("请输入中文");
+
+        var key = "你";
+
+
+        //创建一个空对象，以键值对的方式存储 简：繁
+        var obj = {};
+
+        for (var i = 0; i < arr.length; i++) {
+            // console.log(arr[i]); //由于直接arr[i]是获取的一个字符串，"你=伱"，所以要对字符串做些处理，取出需要的部分
+            //取出"你"
+            arr[i].charAt();
+            // console.log(arr[3].charAt());
+            //取出"伱"
+            arr[i].charAt(arr[i].length - 1);
+            // console.log(arr[2].charAt(arr[2].length-1));
+
+            //obj这个对象的键值对
+            obj[arr[i].charAt()] = arr[i].charAt(arr[i].length - 1);
+        }
+
+        // console.log(obj);
+        var key = prompt("请输入一个中文")
+        console.log(obj[key]);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
