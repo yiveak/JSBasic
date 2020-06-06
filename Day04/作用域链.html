@@ -6,7 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>作用域链</title>
     <script>
-        //变量应在当前的作用域里找，否则一级一级向上找，即为作用域链
+        /*
+        变量应在当前的作用域里找，否则一级一级向上找，即为作用域链
+        根据内部函数可以访问外部函数变量的这种机制，用链式查找决定哪些变量可以被内部函数访问，即为作用域链
+        采取的原则：就近原则
+        */
+
         var str = "我在0级作用域";
 
         function f1() {

@@ -92,11 +92,6 @@
         //简转繁
         var arr = ["你=伱", "说=詤", "我=莪", "好=恏", "帅=帅", "气=气", "的=的", "杨=楊", "哥=哥"];
 
-        // var key = prompt("请输入中文");
-
-        var key = "你";
-
-
         //创建一个空对象，以键值对的方式存储 简：繁
         var obj = {};
 
@@ -115,7 +110,36 @@
 
         // console.log(obj);
         var key = prompt("请输入一个中文")
-        console.log(obj[key]);
+        alert(obj[key]);
+    </script>
+
+    <!-- 练习3的扩展练习 -->
+    <script>
+        //输入英文单词，输出中文意思
+        var obj={
+        "abandonment":"n.放弃",
+        "abbreviation" :"n.缩写",
+        "abeyance" :"n.缓办，中止",
+        "abide" :"v.遵守",
+        "ability" :"n.能力",
+        "able" :"adj.有能力的，能干的",
+        "abnormal": "adj.反常的，变态的",
+        "aboard": "adv.船(车)上",
+        "abolish" :"v.废除，取消",
+        "abolition" :"n.废除，取消"
+        };
+
+        var word = prompt("请输入一个英文单词");
+        //1. 判断用户输入的是否是英文，如果不是，则跳出相应的提示信息；
+        //2. 如果是，那么判断用户输入的英文单词是否是这个测试obj对象的键
+        if(word instanceof St){
+
+        }else{
+            alert("请输入正确的英文单词。")
+        }
+        
+
+
     </script>
 </head>
 

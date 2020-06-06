@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>isRunNian</title>
+    <script>
+        //判断是不是闰年
+        function isRunNian(year) {
+            //如果是闰年，返回true, 反之则返回false
+            var flag = true; //默认true
+            if (year % 4 == 0 && year % 100 == 0 || year % 400 == 0) { //即是闰年
+
+            } else { //不是闰年时
+                flag = false;
+            }
+            return flag;
+        }
+        // var year = parseInt(prompt("请输入年份数"));
+        // console.log(isRunNian(year));
+
+
+        //根据用户输入的年份数，输出当年2月份的天数是28？还是29？---- 练习函数嵌套调用
+        function backDay() {
+            var year = parseInt(prompt("请输入年份"));
+            if (isRunNian(year)) { //如果是闰年
+                alert(year + "年的2月份天数是28天。");
+            } else { //如果不是闰年，即为平年
+                alert(year + "年的2月份天数是29天。");
+            }
+        }
+        backDay();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

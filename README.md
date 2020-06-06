@@ -767,6 +767,10 @@ If you use a named index, JS will redefine the array to a standard object.
   >   ```javascript
   >   var arr = new Array(1, 2, 3, 4)
   >   arr.push(5, 6, 7); //并返回操作后数组的长度
+  >   //which means,
+  >   console.log(arr.push(9)); //返回的是8
+  >   
+  >   
   >   console.log(arr); //[1, 2 ,3, 4, 5, 6]
   >   //如果push()不传值，那么默认返回数组的最后一个元素
   >   console.log(arr.push());
@@ -834,8 +838,6 @@ If you use a named index, JS will redefine the array to a standard object.
 
 * `sort()`
 
-* `splice()`
-
 * `split()`
 
 * `toLoacalString()`
@@ -878,6 +880,39 @@ graph TB
 	
 	
 ```
+
+用来描述JavaScript脚本怎样与HTML或XML文档交互的Web标准。
+
+* 使用JS操作节点
+* 使用JS操作文档
+* 使用JS操作元素
+* 使用JS操作文本和属性
+
+
+
+DOM1级定义了Node接口，该接口为DOM的所有节点类型定义了原始类型。定义所有节点类型必须
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -31,6 +31,40 @@
             return sum;
         }
         console.log(getSum(4, 3, 4));
+
+
+        //数组元素的顺序、反序输出
+        // 方式1
+        function getArrayReverse(arr) {
+            //用另一个新的空数组来存储这些对调后的元素
+            var newArr = [];
+            //从后往前获取原数组的每个元素，并将元素赋值给新数组
+            //方式1. i从0开始
+            // for (var i = 0; i < arr.length; i++) {
+            //     newArr[i] = arr[arr.length - 1 - i];
+            // }
+            //方式2. i从array.length-1开始
+            for (var i = arr.length - 1; i >= 0; i--) {
+                //巧妙在newArr.length
+                newArr[newArr.length] = arr[i];
+
+            }
+            //返回新数组
+            return newArr;
+        }
+        var arr = [1, 2, 3, 4, 5];
+        console.log(getArrayReverse(arr));
+
+        //方式2
+        //  1. 遍历原数组的每个元素
+        //  2. 然后将获取的当前数组元素跟最后一个元素对调
+        //  3. 实现对调，是通过借助另一个"盒子", 也就是另一个变量
+        // temp = array[i]; //将当前获取的元素放在了temp这个变量中
+        //第一个元素的索引是0, 最后一个元素的索引是array.length-1
+        //第二个元素的索引是1, 最后第二个元素的索引是array.length-1-1
+        //第三个元素的索引是2, 最后第二个元素的索引是array.length-1-2
+        //第i个元素的索引是i, 最后第i个元素的索引是array.length-1-i
+        //array[array.length - 1 - i] = temp;
     </script>
 </head>
 
