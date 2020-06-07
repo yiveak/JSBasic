@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>修改表单属性</title>
+    <!-- 利用DOM操作表单元素属性：type, value, checked, selected, disabled -->
+</head>
+
+<body>
+
+    <button>click</button>
+    <input type="text" value="">
+    <script>
+        alert("点击按钮后，后面的文本框显示被点击的信息，同时该按钮、文本框禁用");
+        //获取元素
+        var btn = document.querySelector('button');
+        var input = document.querySelector('input');
+
+        //注册事件 = 事件处理程序
+        btn.onclick = function () {
+            input.value = 'clicked';
+            //禁用按钮
+            // btn.disabled = true;
+            this.disabled = true;
+            //禁用文本框
+            input.disabled = true;
+        }
+    </script>
+</body>
+
+</html>

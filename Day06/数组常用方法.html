@@ -92,7 +92,7 @@
     <script>
         //让数组中每个元素经过指定函数的测试，其中测试合格的元素将作为一个新的数组返回
         var arr = ['1', 'c', 3, 't', 9];
-        var newArr = arr.filter(function(ele){
+        var newArr = arr.filter(function (ele) {
             // if(ele instanceof String){
             //     return ele;
             // }
@@ -128,7 +128,12 @@
         console.log("b = " + b);
         console.log("b的类型是：" + typeof b);
         //如果数组的元素中也有数组、对象呢
-        var arr = [[1,2,3],{name:"Jojo"},123,'abc'];
+        var arr = [
+            [1, 2, 3], {
+                name: "Jojo"
+            },
+            123, 'abc'
+        ];
         console.log(arr.join()); //1,2,3,[object Object],123,abc ---- 元素'子'数组也调用了join()
     </script>
 
@@ -154,6 +159,7 @@
         console.log("a = " + a.reverse());
         // console.log("b = " + b); //因为直接在原数组上操作，不必通过声明变量b
     </script>
+
     <!-- sort()，排序的方法通过其参数来决定。 -->
     <script>
         //如果省略参数，则sort()方法将按照默认的规则对数组进行排序
@@ -202,6 +208,9 @@
     <!-- 获取子数组 -->
     <!-- slice(), 不改变原数组，返回一个新的数组对象。这个对象是由begin, end决定的原数组浅拷贝，包括begin，不包括end -->
     <script>
+        /*
+        关于浅拷贝：可以拷贝简单类型的值，而复杂类型，则拷贝的是索引
+        */
         var animals = ["ant", "bison", "camel", "duck", "dog", "chicken", "elephant"];
         console.log(animals.slice()); //不传入参数，原数组整个输出
         console.log(animals.slice(1, 3)); //["bison", "camel"]
@@ -211,6 +220,23 @@
         console.log(animals.slice(animals.length)); //空数组
         //参数小于0，从后往前
         console.log(animals.slice(-1)); //["elephant"], -1是最后一个元素的索引
+    </script>
+
+    <!-- indexOf() -->
+    <!-- 数组去重 -->
+    <script>
+        /*
+        查找的是指定元素的索引
+        indexOf(searchElement, fromIndex) 后一个参数是可选的，查找不到返回-1
+        fromIndex的3种规则:
+        正值，而且大于等于数组的长度，那么查找整个数组
+        负值，从数组的末尾向前偏移
+        负值，如果绝对值大于数组的长度，方法返回-1，不查找
+        */
+        var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        console.log(arr.indexOf(1)); //0
+        console.log(arr.indexOf('1')); //-1
+        console.log(arr.indexOf());
     </script>
 </head>
 

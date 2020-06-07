@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>操作元素</title>
+    <style>
+        div,
+        p {
+            margin-top: 10px;
+            width: 200px;
+            height: 30px;
+            line-height: 30px;
+            background-color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <button>当前系统时间</button>
+    <div>1970-01-01</div>
+    <p>什么是事件三要素呢？</p>
+    <script>
+        //点击"当前系统时间"，div这个盒子里显示当前时间
+
+        //1. 获取事件源
+        var button = document.querySelector('button');
+        var div = document.querySelector('div');
+
+        //注册事件 = 事件处理程序
+        button.onclick = function () {
+            //innerText修改元素的内容
+            // div.innerText = '2020-06-09'; 
+            div.innerText = getDate()
+        }
+
+        //实时获取当前系统时间，并以"x年x月x日 小时：分钟：秒"的形式输出
+        function getDate() {
+            var dt = new Date();
+            var year = dt.getFullYear(),
+                month = dt.getMonth() + 1,
+                date = dt.getDate(),
+                hours = dt.getHours(),
+                minutes = dt.getMinutes(),
+                seconds = dt.getSeconds();
+
+            hours = hours > 10 ? hours : '0' + hours;
+            minutes = minutes > 10 ? minutes : '0' + minutes;
+            seconds = seconds > 10 ? minutes : '0' + seconds;
+
+            return year + "年" + month + "月" + date + "日" + " " + hours + ": " + minutes + ": " + seconds;
+
+        }
+
+        //获取元素，并不添加事件
+        var p = document.querySelector('p');
+        p.innerHTML = getDate();
+    </script>
+</body>
+
+</html>

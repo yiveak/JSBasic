@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>捕获异常</title>
+    <script>
+        //为了预防用户随意传递参数，可以在函数体内检测函数的形参、实参是否一致，即二者的个数是否一致
+        //即通过functionName.length、 arrguments.length二者的比较
+        //如果二者不一致，那么抛出异常；如果一致，则正常执行。
+
+        function getSum(a, b) {
+            if (getSum.length != arguments.length) {
+                //The throw statement lets you create custom errors.
+                throw new Error("实参与形参不一致，请重新调用函数。");
+            } else {
+                return a + b;
+            }
+        }
+        /*
+        The try statement lets you test a block of code for erros.
+        The try statement allows you to define a block of code to be tested for errors while it is being executed.
+        */try {
+            // alert(getSum(2));
+            alert("这是一个用来计算两个数之和的函数");
+            var x = parseInt(prompt("Please enter number x"));
+            var y = parseInt(prompt("Please enter number y"));
+            alert("Sum is " + getSum(x, y));
+        }
+        /*
+        The catch statement lets you handle the error.
+        The catch statement allows you to define a block of code to be executed, 
+        if an error occurs in the try block.
+        */catch (err) {
+            alert(err.message);
+        }
+
+        //The finally statement lets you execute code, after try and catch, regardless of the result.
+        var a = new Array(1,2,3,4);
+        console.log(a);
+        a.length = 0;
+        console.log(a);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

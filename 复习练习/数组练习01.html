@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组练习01</title>
+
+    <!-- 反转任意数组的元素 -->
+
+    <!-- for循环 -->
+    <script>
+        var arr = ['a', 'b', 'c', '1', '2', '3'];
+        for (var i = 0; i < arr.length / 2; i++) {
+            var temp = arr[i];
+            arr[i] = arr[arr.length - 1 - i];
+            arr[arr.length - 1 - i] = temp;
+        }
+        console.log(arr);
+    </script>
+
+    <!-- reverse() -->
+    <script>
+        var arr = ['a', 'b', 'c', '1', '2', '3'];
+        console.log(arr.reverse());
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

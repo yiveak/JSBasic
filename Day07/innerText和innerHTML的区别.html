@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>innerText和innerHTML的区别</title>
+</head>
+
+<body>
+    <div></div>
+    <p>
+        wenziwenzi
+        <span>spanspan</span>
+    </p>
+    <script>
+        //innerText和innerHTML的区别
+        //innerText 不识别HTML标签 非标准 去除HTML标签、空格和换行
+        var div = document.querySelector('div');
+        // div.innerText = "<strong>加粗</strong>";
+        //innerHTML 识别HTML标签 W3C标准 保留HTML标签、空格和换行
+        div.innerHTML = "<strong>加粗</strong>";
+
+        //二者都可以获取元素里的内容
+        var p = document.querySelector('p');
+        console.log(p.innerText);
+        console.log(p.innerHTML);
+    </script>
+
+</body>
+
+</html>

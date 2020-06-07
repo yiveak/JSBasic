@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>修改样式属性</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        var div = document.querySelector('div');
+        var flag = 0 ;
+        div.onclick = function (){
+            if(flag == 0){
+                this.style.backgroundColor='#333';
+                flag = 1;
+            }else{
+                this.style.backgroundColor='orange';
+                flag = 0;
+            }
+
+        }
+    </script>
+</html>

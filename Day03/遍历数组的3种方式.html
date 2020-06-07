@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>遍历数组的3种方式</title>
+    <script>
+        //三种方式：for循环、for-in、forEach()
+
+        //============================================================================================================
+        //1. for-in
+        //============================================================================================================
+        var arr = new Array(1, 2, 3, 4, 'a', 'b', 'c', 'd');
+
+        for (var key in arr) {
+            // console.log(key); //index
+            // console.log(arr[key]); 
+            // console.log(arr.key); //undefined
+        }
+
+        //============================================================================================================
+        //2. forEach() ---- ES5
+        //============================================================================================================
+        arr.forEach(function (item, index, array) {
+            // console.log(item); //数组的元素
+            // console.log(index); //数组的索引
+            // console.log(array); //原数组
+            console.log(index + ": " + item);
+        });
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

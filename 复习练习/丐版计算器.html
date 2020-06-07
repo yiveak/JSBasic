@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>丐版计算器</title>
+    <!-- 实现加减乘除以及退出 -->
+    <script>
+        //plus
+        function getSum(a, b) {
+            return a + b;
+        }
+        //
+        function getSubtraction(a, b) {
+            return a - b;
+        }
+
+        function getMultiplication(a, b) {
+            return a * b;
+        }
+
+        function getDivision(a, b) {
+            return a / b;
+        }
+
+        //获取用户输入的两个数值
+        function getInput() {
+            a = Number(prompt("Please enter a number"));
+            b = Number(prompt("Please enter a number"));
+            if (isNaN(a) || isNaN(b)) {
+                alert("请输入正确的数值");
+            }
+        }
+
+        var num = Number(prompt("请输入计算操作选项:"));
+
+
+        switch (num) {
+            case 1:
+                getInput();
+                alert(getSum(a, b));
+                break;
+            case 2:
+                getInput();
+                alert(getSubtraction(a, b));
+                break;
+            case 3:
+                getInput();
+                alert(getMultiplication(a, b));
+                break;
+            case 4:
+                getInput();
+                alert(getDivision(a, b));
+                break;
+            case 5:
+                break;
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>myMath</title>
+    
+    <!-- 利用对象封装自己的数学函数对象 -->
+    <script>
+        //create an object
+        var myMath = {
+            PI: 3.1415926,
+            max: function (arr) {
+                var max = arr[0]
+                for (var i = 1; i < arr.length - 1; i++) {
+                    if (max < arr[i]) {
+                        max = arr[i];
+                    }
+                }
+                return max;
+            },
+            min: function (arr) {
+                var min = arr[0];
+                for (var i = 1; i < arr.length - 1; i++) {
+                    if (arr[i] <min) {
+                        min = arr[i];
+                    }
+                }
+                return min;
+            }
+        }
+        console.log(myMath.PI);
+        var arr = [1, 2, 3, 23, 89, 3, 7, 67, 89, 100]
+        console.log(myMath.max(arr));
+        console.log(myMath.min(arr));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

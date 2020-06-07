@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>修改元素属性</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            margin: 0 auto;
+            width: 500px;
+            border: 2px solid #eee;
+        }
+
+        button {
+            display: inline-block;
+            margin: 20px 90px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <button id = "google" class="google" >google</button>
+        <button id = "duckduckgo" class="duckduckgo">duckduckgo</button>
+    </div>
+
+    <div>
+        <!-- <a href="https://www.baidu.com">baidu</a> -->
+        <a href="">
+            <img src="images/TomJerry.png" alt="" title="">
+        </a>
+    </div>
+
+
+    <script>
+        alert("点击按钮后切换相应图片，另外点击该图片可以跳转相应网址");
+        //1. 获取元素
+        var google = document.querySelector('.google');
+        var duckduckgo = document.querySelector('.duckduckgo');
+        // var img = document.getElementsByTagName('img'); //获取不到
+
+
+        // var google = document.getElementById('google');
+        // var duckduckgo = document.getElementById('duckduckgo');
+        var img = document.querySelector('img');
+        var a = document.querySelector('a');
+
+
+        //注册事件 = 事件处理程序
+        google.onclick = function () {
+            img.src = "images/google.png";
+            img.title = "google";
+            img.onclick = function(){
+                a.href='https://www.goolge.com';
+            }
+        }
+        duckduckgo.onclick = function () {
+            img.src = 'images/duckduckgo.png';
+            img.title = 'duckduckgo';
+            img.onclick = function(){
+                a.href='https://www.duckduckgo.com';
+            }
+        }
+    </script>
+</body>
+
+</html>

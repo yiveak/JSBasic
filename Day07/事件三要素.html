@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件三要素</title>
+
+</head>
+
+<body>
+
+    <button id="btn">Play with flag</button>
+
+    <script>
+        //点击一个按钮，弹出一个对话框
+        //事件由三部分组成：事件源 事件类型 事件处理程序 ==== 事件三要素
+        //事件源：事件被触发的对象
+        //注册事件(绑定事件) or 事件类型：如何触发，什么事件 比如鼠标点击(onclick)按钮、scroll、悬停
+        //事件处理程序：通过一个函数赋值的方式完成
+
+        //获取事件源
+        var btn = document.getElementById('btn');
+
+        //注册事件 = 事件处理程序(采用函数赋值的形式)
+        btn.onclick = function () {
+            alert("Flag is true.")
+        }
+    </script>
+
+    <!-- 执行事件的步骤 -->
+    <div>点鸡</div>
+    <script>
+        //1. 获取事件源
+        var div = document.querySelector('div'); //H5，通过选择器
+        //2. 注册事件
+        //div.onclick
+        //3. 事件处理程序
+        div.onclick = function(){
+            console.log("clicked");
+        }
+    </script>
+</body>
+
+</html>
