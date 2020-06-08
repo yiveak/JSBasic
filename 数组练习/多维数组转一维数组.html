@@ -8,12 +8,22 @@
     <script>
         //============= 方式1. Array.flat(Infinity); ===============//
         //使用 Infinity，可展开任意深度的嵌套数组
-        var arr4 = [1, 2, [3, 4, [5, 6, [7, 8, [9, 10]]]]];
-        arr4.flat(Infinity);
+        // let arr4 = [1, 2, [3, 4, [5, 6, [7, 8, [9, 10]]]]];
+        // arr4.flat(Infinity);
         // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
 
         // ================方式2. ==================//
+
+
+
+        let arr1 = [[1,2,3,4],34,'456',['bjk','b','e',],[2,'d','g',['f','d',12,'23ef']]];
+
+        //console.log(arr1.flat(Infinity)); //(16) [1, 2, 3, 4, 34, "456", "bjk", "b", "e", 2, "d", "g", "f", "d", 12, "23ef"]
+
+        let str1 = (arr1.flat(Infinity)).join('');
+        console.log(str1);
         
+
     </script>
 </head>
 

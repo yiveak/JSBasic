@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多维数组转字符串</title>
+    <script>
+        //=============================flat(), join()=======================================//
+        let arr = [
+            [1, 2, 3, 4], 34, '456', ['bjk', 'b', 'e', ],
+            [2, 'd', 'g', ['f', 'd', 12, '23ef']]
+        ];
+
+        //console.log(arr.flat(Infinity)); //(16) [1, 2, 3, 4, 34, "456", "bjk", "b", "e", 2, "d", "g", "f", "d", 12, "23ef"]
+
+        let str = (arr.flat(Infinity)).join('');
+        console.log(str); // 123434456bjkbe2dgfd1223ef
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

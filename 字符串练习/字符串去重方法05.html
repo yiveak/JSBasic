@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串去重方法05</title>
+    <script>
+        let str = "Iandiduoviospibsiwldfd298467892ities";
+
+        //字符串转数组
+        let arr = str.split('');
+        // console.log(arr);
+        let newArr = [...new Set(arr)];
+        // console.log(newArr);
+
+        //数组转字符串
+        let newStr = newArr.join('');
+        console.log(newStr);
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
