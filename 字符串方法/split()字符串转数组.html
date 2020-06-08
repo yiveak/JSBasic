@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String.split()字符串转数组</title>
+    <script>
+        //============================================================================================================
+        // 字符串转为数组 ---- String.split() 
+        // String.split() 有2个参数 String.split(分隔符, 指定放回数组的长度) 
+        // 分隔符是必需的 从参数指定的位置分割StringObject 即指定边界处 通过正则表达式   
+        // 指定返回数组的长度是可选的, 如果未设置这个参数，那么默认是整个字符串都会分割
+        //============================================================================================================
+        let str = "How is your day?";
+        console.log(str.split(" ")); //["How", "is", "your", "day", "?"] 
+
+        //********************interesting，将字符串的每个字符都单独分割了出来，
+        console.log(str.split("")); //["H", "o", "w", " ", "i", "s", " ", "y", "o", "u", "r", " ", "d", "a", "y", "?"]
+        //********************
+        console.log(str.split(" ", 3)); //["How", "is", "your"]
+
+        //********************interesting
+        console.log(str.split("", 3)); //["H", "o", "w"]
+        //********************
+
+
+        //
+        let str1 = "1|2|3|4|5"
+        console.log(str1.split("|"));
+
+        //把一个英文单词hello分割成每个字母 ---通过不指定分隔符的方式
+        let str2 = "hello";
+        console.log(str2.split(""));
+        // console.log(str2.split(''));
+        console.log(str2.split("", 2)); //["h", "e"] 后者数字2指定了被分割出字母的个数
+
+
+        //指定分隔符结合正则的使用 --- 待更新
+        console.log(str1.split(/\|/)); // 如何输出[1,2,3,4,5]
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

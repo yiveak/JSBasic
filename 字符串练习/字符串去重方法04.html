@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串去重方法04</title>
+    <script>
+        alert("遍历字符串中字符，然后判断条件是通过一个新的空对象obj中有没有这个属性，如果没有这个属性，则执行新的字符串添加这个字符。\n使用到的字符串方法有：chatAt(), concat().");
+
+        var str = "Iandiduoviospibsiwldfd298467892ities";
+        // var str = "1111111111111111111111111111111111";
+        function deduplicateStr(str) {
+            let obj = {};
+            let newStr = '';
+            for (let i = 0; i < str.length; i++) {
+                //判断obj这个对象中有没有这个属性
+                if (!obj[str[i]]) { //如果没有这个属性，那就让新字符串添加该字符
+                    newStr = newStr.concat(str[i]);
+                    obj[str[i]] = 1;
+                }
+            }
+            return newStr;
+        }
+        console.log(deduplicateStr(str));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

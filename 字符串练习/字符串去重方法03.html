@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串去重方法03</title>
+    <script>
+        alert("通过遍历原字符串的字符跟新字符串中的字符，如果找不到，则往新的字符串中添加该字符。\n使用到的字符串方法有：indexOf(), concat(), search()。");
+        var str = "Iandiduoviospibsiwldfd298467892ities";
+        // var str = "1111111111111111111111111111111111";
+
+        // //indexOf(), concat()
+        // function deduplicateStr(str) {
+        //     let newStr = '';
+        //     //遍历字符串
+        //     for (let i = 0; i < str.length; i++) {
+        //         if (newStr.indexOf(str[i]) == -1) {
+        //             newStr = newStr.concat(str.charAt(i));
+        //         }
+        //     }
+        //     return newStr;
+        // }
+        // console.log(deduplicateStr(str));
+
+        //search(), concat()
+        function deduplicateStr(str) {
+            let newStr = '';
+            for (let i = 0; i < str.length; i++) {
+                if (newStr.search(str[i]) == -1) {
+                    newStr += str.charAt(i);
+                }
+            }
+            return newStr;
+        }
+        console.log(deduplicateStr(str));
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组去重方法03</title>
+    <script>
+        // alert("")
+        let arr = ['c', 'a', 'z', 'a', 'x', 'a', 'x', 'c', 'b'];
+        console.log(arr);
+        let newArr = [];
+        for (let i = 0; i < arr.length; i++) {
+            let flag = true;
+            for (j = 0; j < newArr.length; j++) {
+                if (newArr.indexOf(arr[i]) !== -1) {
+                    flag = false;
+                }
+            }
+            if (flag) {
+                newArr.push(arr[i]);
+            }
+        }
+        console.log(newArr);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

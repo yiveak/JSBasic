@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串去重方法02</title>
+    <script>
+        alert("通过2层for循环嵌套遍历原字符串跟新字符串中的每个字符。\n使用到的字符串方法有：charAt(), concat()。\nTips:设置一个flag。");
+
+        let str = "Indivisibilities";
+
+        // let str = 'abdddcdefffghhhijklmn'
+
+        //封装成一个字符串去重的函数
+        function deduplicateStr(str) {
+            let newStr = '';
+            //遍历字符串
+            for (let i = 0; i < str.length; i++) {
+                let flag = true;
+                // 1. 获取当前字符 --- str[i] --- i是索引 --- charAt(index) 返回(获取)字符串中指定位置的字符
+                // 2. 跟新字符串对象中的字符遍历比较 --- for循环
+                // 3. 比较的次数是newStr.length次
+                // 4. 如果二者是同一个字符则忽略，反之则添加往新字符串对象中添加字符 --- 需要一个flag
+                for (let j = 0; j < newStr.length; j++) {
+                    if (str.charAt(i) == newStr.charAt(j)) {
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag) {
+                    newStr = newStr.concat(str.charAt(i));
+                    // newStr = newStr + str[i];
+                }
+            }
+            return newStr;
+        }
+        console.log(deduplicateStr(str));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串去重方法01</title>
+    <script>
+        // alert("给一个指定的字符串，然后将字符串中重复的部分去除，输出一个新的字符串.");
+        alert("将字符串转为数组对象去重，然后将数组对象转为字符串。\n使用到的方法有：split(), join(), forEach(), indexOf(), push()。");
+
+        // //============================================================================================================
+
+        // // 字符串转为数组 ---- String.split() 
+        // // String.split() 有2个参数 String.split(分隔符, 指定放回数组的长度) 
+        // // 分隔符是必需的 从参数指定的位置分割StringObject 即指定边界处 通过正则表达式   
+        // // 指定返回数组的长度是可选的, 如果未设置这个参数，那么默认是整个字符串都会分割
+
+        // let str = "How is your day?";
+        // console.log(str.split(" ")); //["How", "is", "your", "day", "?"] 
+        // console.log(str.split("")); //["H", "o", "w", " ", "i", "s", " ", "y", "o", "u", "r", " ", "d", "a", "y", "?"]
+        // console.log(str.split(" ", 3)); //["How", "is", "your"]
+        // console.log(str.split("", 3)); //["H", "o", "w"]
+
+        // //============================================================================================================
+
+
+        // //============================================================================================================
+
+        //数组转字符串 ---- Array.join(参数separator)
+        //如果参数separator为空，那么默认是以逗号分割每个元素
+        //如果参数separator是''，那么每个元素都是直接连起来，中间无任何分隔符
+        //如果参数separator是' '，那么每个元素中间是以空格分隔
+
+        // //============================================================================================================
+
+        //将字符串转为数组，通过数组去重的方式，获得一个新的数组，然后将这个新的数组转为字符串输出
+        //字符串转数组 ---- split():把一个字符串分割成字符串数组
+        //通过for-in遍历整个数组
+
+        let str = 'abdddcdefffghhhijklmn'
+        // console.log(str.split("")); //["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n"]
+
+        // let arr = str.split(""); //字符串转数组
+        // let newArr = []; //使用一个新的数组来存储去重后的数组
+        // for (let k in arr) { //遍历数组 --- for-in
+        //     if (newArr.indexOf(arr[k]) === -1) { //如果新字符串中索引不到这个元素
+        //         newArr.push(arr[k]); //那么就将新的元素添加到新数组中
+        //     }
+        // }
+        // //检查新数组的输出
+        // // console.log(newArr);
+        // //将新数组转为字符串
+        // // let newStr = newArr.join(); //默认分隔符是逗号
+        // let newStr = newArr.join(''); //数组的每个元素中间无空格，直接连在一起
+        // console.log(newStr);
+
+        // //将上面的字符串去重封装到一个函数
+        // function deduplicateString(str) {
+        //     let arr = str.split(""); //字符串转数组
+        //     let newArr = []; //使用一个新的数组来存储去重后的数组
+        //     for (let k in arr) { //遍历数组 --- for-in
+        //         if (newArr.indexOf(arr[k]) === -1) { //如果新字符串中索引不到这个元素
+        //             newArr.push(arr[k]); //那么就将新的元素添加到新数组中
+        //         }
+        //     }
+        //     //检查新数组的输出
+        //     // console.log(newArr);
+            
+        //     //将新数组转为字符串
+        //     let newStr = newArr.join(''); //参数separator设为''，则表示每个元素直接都以直接相连的方式输出成字符串
+        //     return newStr;
+
+        // }
+        // console.log(deduplicateString(str));
+
+
+        //forEach(item, index, array)
+        //将上面的for-in改成forEach()这个方法
+        function deduplicateString(str){
+            let arr = str.split(""); //参数separator是必须的，这里指定""
+            // console.log(arr);
+            let newArr = []; //创建一个新的数组存储每个比较后的元素
+            
+            //forEach()遍历数组
+            arr.forEach(function (item){
+                //查询新数组中是否有这个元素, indexOf()，如果没有，则返回值-1，同时向新数组添加该元素。
+                //即，通过返回值是不是-1来获取原数组中不重复的元素
+                if(newArr.indexOf(item) === -1){
+                    newArr.push(item);
+                }
+            })
+            // console.log(newArr);
+            let newStr = newArr.join('');
+            return newStr;
+        }
+        console.log(deduplicateString(str));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

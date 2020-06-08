@@ -727,6 +727,20 @@ console.log(arr[9]);
   console.log(c4); //两个数组的元素排列方式并不相同
   ```
 
+
+
+在去重方法中，为什么调用对象的属性时用的是中括号，而不是点方法？
+
+因为：
+
+1、中括号法可以用变量作为属性名,而点方法不可以；
+
+2、中括号法可以用数字作为属性名,而点语法不可以；
+
+3、中括号法可以使用JS的关键字和保留字作为属性名,而点语法不可以(尽量避免在变量或者属性中使用关键字或保留字)。
+
+
+
 ##### Associative(关联、联合) Arrays
 
 虽然其他的编程语言里支持arrays with named indexes(**text instead of number**)，即所谓的关联数组，但在JS中并不支持。(In JS, arrays always use numbered indexes.)
@@ -896,11 +910,46 @@ DOM1级定义了Node接口，该接口为DOM的所有节点类型定义了原始
 
 
 
+获取
+
+`document.getElementById('id名')`
+
+`document.getElemetsByTagName('标签名')`
+
+`document.get`
 
 
 
+H5
+
+```javascript
+document.querySelector('.类名')
+
+document.querySelector('#id名')
+
+document.querySelectorAll('')
+
+```
+
+```javascript
+//获取body元素对象
+document.body
+
+//获取html元素对象
+document.documentElement
+```
 
 
+
+### 事件
+
+触发 ---- 响应机制
+
+事件三要素、三部分组成：事件源、事件类型、事件处理程序
+
+* 事件源：事件被触发的对象，比如button
+* 事件类型：如何触发，什么事件，比如鼠标经过、悬停、点击(onclick)、scroll
+* 事件处理程序：通过一个函数赋值方式 完成
 
 
 
