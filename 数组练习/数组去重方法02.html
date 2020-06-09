@@ -7,9 +7,11 @@
     <title>数组去重方法02</title>
 
     <script>
-        let arr = [1, 2, 3, 4, 1, 2, 4, [23, 4, 21, 4, 154, 23],
-            [2, 3, 4, 4, [2, 100, 244, 200]]
-        ]
+        // let arr = [1, 2, 3, 4, 1, 2, 4, [23, 4, 21, 4, 154, 23],
+        //     [2, 3, 4, 4, [2, 100, 244, 200]]
+        // ];
+        let arr = ['c', 'a', 'z', 'a', 'x', 'a', 'x', 'c', 'b'];
+
         // 上面数组去重  并输出一条一维数组
         // 最少三个方法
 
@@ -19,24 +21,24 @@
 
         // =========================splice()==============================//
 
-        // for (let i=0;i<arr.length;i++){
-        //     for(let j = i+1; j<arr.length;j++){
-        //         if(arr[i]==arr[j]){
-        //             arr.splice(j,1);
-        //             j--;
-        //         }
-        //     }
-        // }
+        /* for (let i=0;i<arr.length;i++){
+            for(let j = i+1; j<arr.length;j++){
+                if(arr[i]==arr[j]){
+                    arr.splice(j,1);
+                    j--;
+                }
+            }
+        } */
         // console.log(arr); //[1, 2, 3, 4, 23, 21, 154, 100, 244, 200]
 
         for (let i = 0; i < arr.length; i++) {
-            for (let j = i + 1; j <= arr.length - i; j++) {
+            for (let j = i + 1; j <= arr.length; j++) {
                 if (arr[i] == arr[j]) {
                     arr.splice(j, 1);
                     j--;
                 }
             }
-        }
+        } 
         console.log(arr); //  [1, 2, 3, 4, 23, 21, 154, 100, 244, 200]
     </script>
 </head>
