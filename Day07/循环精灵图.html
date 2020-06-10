@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>循环精灵图</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        } 
+        li{
+            list-style-type: none;
+        }
+        .box{
+            width: 250px;
+            margin: 100px auto;
+        }
+
+        .box li{
+            float: left;
+            width: 24px;
+            height: 24px;
+            margin: 15px;
+            background: url(images/sprite.png) no-repeat;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <script>
+            //获取元素
+            let li = document.getElementsByTagName('li');
+            //loop
+            for(let i = 0; i<li.length; i++){
+                let index = i*44;
+                li[i].style.backgroundPosition = '0-'+index+'px';
+            }
+        </script>
+    </div>
+</body>
+</html>

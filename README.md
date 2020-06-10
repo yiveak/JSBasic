@@ -776,7 +776,7 @@ If you use a named index, JS will redefine the array to a standard object.
 
 * 使用`push()` 和`pop()` 方法操作数组 ---- 尾部
 
-  > * `push()` ---- 在数组的末尾，插入一个或多个元素
+  > * `push(item...)` ---- 在数组的末尾，插入一个或多个元素。多个参数。返回值：新数组的长度。
   >
   >   ```javascript
   >   var arr = new Array(1, 2, 3, 4)
@@ -784,15 +784,15 @@ If you use a named index, JS will redefine the array to a standard object.
   >   //which means,
   >   console.log(arr.push(9)); //返回的是8
   >   
-  >   
+  >   //改变原数组
   >   console.log(arr); //[1, 2 ,3, 4, 5, 6]
-  >   //如果push()不传值，那么默认返回数组的最后一个元素
+  >   //如果push()不传值，那么默认返回数组的长度
   >   console.log(arr.push());
   >   ```
   >
   >   
   >
-  > * `pop()` ---- 从数组的末尾，依次将元素删除
+  > * `pop()` ---- 从数组的末尾，依次将元素删除。无参数。返回值：被删除的元素。
   >
   >   ```javascript
   >   var arr = new Array('a', 'b', 'c', 10);

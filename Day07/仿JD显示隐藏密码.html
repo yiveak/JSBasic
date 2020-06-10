@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>仿JD显示隐藏密码</title>
+    <style>
+        .box {
+            position: relative;
+            margin: 200px auto;
+            width: 300px;
+            border: 0;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .box input {
+            width: 250px;
+            height: 20px;
+            border: 0;
+            outline: none;
+        }
+
+        .box img {
+            position: absolute;
+            width: 24px;
+            right: 2px;
+            top: 1px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <label for="">
+            <img src="images/close.png" alt="">
+        </label>
+        <input type="password" name="" id="pwd">
+
+        <script>
+            let pwdEye = document.querySelector('img');
+            let pwd = document.getElementById('pwd');
+
+            let flag = true;
+            pwdEye.onclick = function () {
+                if (flag) {
+                    pwd.type = "text";
+                    pwdEye.src = "images/open.png";
+                    flag = false;
+                } else {
+                    pwd.type = "password";
+                    pwdEye.src = "images/close.png";
+                    flag = true;
+                }
+            };
+        </script>
+    </div>
+</body>
+
+</html>

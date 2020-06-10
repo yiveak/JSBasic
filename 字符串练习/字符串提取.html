@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串提取</title>
+    <script>
+        const url = 'https://www.xxx.com/directory/myFollow?id=100&name=nxxn&age=85'
+        // // 取出上面字符串后面?的值
+        // // 取出上面字符串的id值name值age值
+
+        //============================================================================================================
+
+        // // 取出上面字符串后面?的值
+
+        //==============方式1. indexOf(), slice()=============// 
+        // let str=url.slice(url.indexOf('?')+1);
+
+        // or search(), slice()  search(/regexp主体/可选修饰符)
+        //正则表达式语法 /正则表达式主体/修饰符(可选)
+        // let str = url.slice(url.search(/\?/)+1); //wrong noOutput
+        
+        // let str = url.slice(url.search(/\bi\w*\b/));
+        
+        // console.log(url.search('a'));
+        // console.log(str);
+
+
+        
+        //==================方式2. match()==================//
+        // console.log(url.match(/^id*/));
+        // console.log(url.match());
+
+        let str1 = /\bid\b/.test(url);
+        console.log(str1); //
+
+        // let str1 = url.match(/\bi\w*\b/);
+        // let str1 = /\bi\w*\b/test(url);
+        // console.log(str1);
+
+        
+
+        //============================================================================================================
+
+
+
+        //============================================================================================================
+
+        
+        // const url = 'https://www.xxx.com/directory/myFollow?id=100&name=nxxn&age=85'
+        // // 取出上面字符串的id值name值age值
+        //=================方式1. substr()=======================//
+        
+
+
+        //============================================================================================================
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

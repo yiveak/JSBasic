@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>显示隐藏搜索文本框内容</title>
+    <style>
+        input {
+            color: #999;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" value="Gleipnir">
+
+    <script>
+        let input = document.querySelector('input');
+        input.onfocus = function () {
+            if (this.value !== '') {
+                this.value = '';
+                this.style.color = '#333';
+            } else {
+                this.value = 'Gleipnir';
+            }
+        }
+        input.onblur = function () {
+            if (this.value === '') {
+                this.value = 'Gleipnir';
+                this.style.color = '#999';
+            } else {
+                this.style.color = '#333';
+            }
+
+
+        }
+    </script>
+</body>
+
+</html>
