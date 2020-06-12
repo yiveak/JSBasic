@@ -30,13 +30,15 @@ console.log(ageOver18Users);
 
 // 2. 编写函数filterAdult
 function filterAdult(arr) {
+    let newArr = [];
     arr.filter(function (item, index, array) {
         if (item.age >= 18) {
-            return item;
+            newArr.push(item);
             /* console.log([item]);
             console.log(typeof [item]); */
         }
     });
+    return newArr;
 }
 console.log(filterAdult(arr));
 // filterAdult(arr);

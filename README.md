@@ -32,16 +32,14 @@ JavaScript的位置：
 
    
 
-2. `<script>`标签内，在`<head>`标签中的`<script>`标签中
+2. `<script>`标签内
 
    ```html
-   <head>
-       <script>
+   <script>
        	alert("Hello, world!");
-       </script>
-   </head>
+   </script>
    ```
-
+   
    
 
 3. 外部JavaScript文件引入——该`<script>`标签中不可再写任何JS代码
@@ -58,9 +56,9 @@ JavaScript的位置：
 
 注意：***JS中变量声明时并不声明变量的数据类型。***
 
-存储被操作数据的”容器“，根据变量名获取到这个”容器“内的数据。Container
+是一个容器，里面存储了被操作的数据，根据变量名获取到这个”容器“内的数据。Container
 
-* 变量的声明 ---- var，let(ES6，局部变量)
+* 变量的声明 ---- `var`，`let` ，`const` (后两者ES6，局部变量)
 * 变量的声明及初始化赋值 ---- 变量声明了，但未赋初始值，则这个变量的值是undefined。
 * 多个变量的声明赋值 ---- 逗号隔开各个变量
 
@@ -402,7 +400,7 @@ The **this** keyword refers to the **current object** , and **its value cannot b
    构造函数，一种特殊的函数。主要用来在创建对象时初始化对象，即w
 
    ```javascript
-   //函数名大写开头，通常
+   //自定义构造函数的函数名通常大写开头
    function Phone(brand, price, capacity, height, width, depth, weight, display){
        this.brand = brand;
        this.price = price;
@@ -417,28 +415,33 @@ The **this** keyword refers to the **current object** , and **its value cannot b
        }
    }
    
-   //实例函数，即创建一个对象
-   var phone = new Phone("Apple", 2999, 64, 138.4, 67.3, 7.3, 148, 4.7)
+   //实例函数，即创建一个对象，实例化对象
+   //let objectName = new 自定义构造函数名(参数)
+   let phone = new Phone("Apple", 2999, 64, 138.4, 67.3, 7.3, 148, 4.7)
    
-   //添加一个属性
+   //添加一个属性，并赋予属性值
    phone.chip="A13 Bionic Chip";
    
    //调用对象的方法
+   //对象名.方法名();
+   //对象名['方法名']();
    phone.sendMsg();
-   //or phone["sendMsg"]();
+//or phone["sendMsg"]();
    
-   ```
-
-   this关键字 ---- 隐式对象
-
+```
    
-
+this关键字 ---- 隐式对象
+   
+   
+   
 3. **字面量的方式** ---- the object literal( or initializer) syntax
 
    This allows you to create only **a  single object**.
 
    ```javascript
-   var dog = {
+   let obj = {}; //一个空对象
+   
+   let dog = {
        name: "cookie",
        age: 5,
        color: brown,
@@ -552,11 +555,23 @@ An object's properties are similar to variables; methods are similar to function
 
 
 
-遍历对象的属性 ---- for-in循环
+#### 遍历对象
+
+`for in` ---- 遍历对象的属性名
 
 ```javascript
-for (var key in object){
-    console.log("key = "+object[key]);
+let obj = {
+    name: "john",
+    age: 25,
+    sex: "male",
+    job: "artist",
+    hobby: "cooking",
+    favFood: "ice-cream",
+};
+
+for(let k in obj){
+    console.log(k); //输出的是对象的每个属性，properties
+    console.log(obj[k]); //输出的是对象的每个属性对应的属性值，propertyValues
 }
 ```
 
@@ -607,6 +622,8 @@ Math.pow(x, y); //x的y指数次幂
 Math.random(); //[0, 1)之间的伪随机数
 Math.round(x); //四舍五入
 Math.sqrt(x); //平方根
+
+Math.random(-1.5); //-1，而不是-2，因为往大取
 ```
 
 
@@ -680,7 +697,7 @@ An array uses **numbers** to access its elements, and an object uses **names** t
 var arr = new Array("HTML", "CSS", "JavaScript", "Python");
 
 //or, you can also declare an array, tell it the number of elements it will store, and add the elements later.
-var arr2 = new Array(3);
+let arr2 = new Array(3); //这里的参数3，指定的是数组的长度，即数组的元素有多少个
 arr2[0] = "C";
 arr2[1] = "Perl";
 arr2[2] = "PHP";
@@ -768,18 +785,18 @@ If you use a named index, JS will redefine the array to a standard object.
 
 
 
-##### :star:操作数组
+#### :star:数组对象方法
 
 * 使用`delete` 删除数组元素，其数组的长度不改变，即数组的length属性值不变。
 
   > 当改变数组的长度时，即给数组的length属性重新赋值时，数组会自动地在末尾增加或删除元素，增加的元素其值为undefined。
 
-* 使用`push()` 和`pop()` 方法操作数组 ---- 尾部
+* 使用`push()` 和`pop()` 方法操作数组 ---- 尾部，原数组长度被改变，即原数组被改变
 
   > * `push(item...)` ---- 在数组的末尾，插入一个或多个元素。多个参数。返回值：新数组的长度。
   >
   >   ```javascript
-  >   var arr = new Array(1, 2, 3, 4)
+  >   let arr = new Array(1, 2, 3, 4)
   >   arr.push(5, 6, 7); //并返回操作后数组的长度
   >   //which means,
   >   console.log(arr.push(9)); //返回的是8
@@ -792,7 +809,7 @@ If you use a named index, JS will redefine the array to a standard object.
   >
   >   
   >
-  > * `pop()` ---- 从数组的末尾，依次将元素删除。无参数。返回值：被删除的元素。
+  > * `pop()` ---- 从数组的末尾，依次将元素删除，或者说**提取元素**。无参数。返回值：被删除(提取)的元素。
   >
   >   ```javascript
   >   var arr = new Array('a', 'b', 'c', 10);
@@ -800,11 +817,11 @@ If you use a named index, JS will redefine the array to a standard object.
   >   console.log(arr); //['a', 'b', 'c']
   >   ```
 
-* 使用`unshift()` 和`shift()` 方法操作数组 ---- 头部
+* 使用`unshift()` 和`shift()` 方法操作数组 ---- 头部，原数组长度被改变，即原数组被改变
 
-  > * `unshift()` 在数组的头部，增加元素
+  > * `unshift()` 在数组的头部，增加元素，返回值是新数组的长度。
   >
-  > * `shift()` 从数组的头部，删除第一个元素，并返回该元素的值。---- 用来更改数组的长度
+  > * `shift()` 从数组的头部，删除(**提取**)第一个元素，无参数，返回值是被删除(提取)的元素。
   >
   >   ```javascript
   >   var arr = new Array(1,2,4);
@@ -821,48 +838,66 @@ If you use a named index, JS will redefine the array to a standard object.
   >   console.log(arr);
   >   ```
 
-* 使用`splice()` 方法 ---- 通用的，在数组指定位置除、插入元素的方法
+* :star:使用`splice(开始的位置, 删除的个数, 额外添加的元素)` 方法 ---- 在数组指定位置**删除**、**插入(添加)**元素的方法。
 
   > 3个参数
   >
-  > * para1：指定插入的起始位置，start from 0
-  > * para2：指定删除元素的个数
-  > * para3：插入的具体元素
+  > * startIndex：指定插入的起始位置，start from 0
+  > * deleteCount：指定删除元素的个数
+  > * item：要插入(添加)的具体元素
+  >
+  > 改变原数组，返回值是：被删除的元素组成的数组。
   >
   > ```javascript
-  > var a = new Array(1, 2, 3, 4, 5, 6, 7);
+  > let a = new Array(1, 2, 3, 4, 5, 6, 7);
   > //传入2个参数
-  > var b = a.splice(2, 3); //从0开始索引
-  > document.write(a+"<br />");
-  > document.write(b+"<br />");
+  > let b = a.splice(2, 3); //从0开始索引
+  > document.write(a+"<br />"); //[1, 2, 6, 7]
+  > document.write(b+"<br />"); //[3, 4, 5]
   > 
   > //传入3个参数
-  > var c = a.splice(1, 2, -2, -4, 9, 19);
-  > document.write(a+"<br />");
-  > document.write(c+"<br />");
+  > //第一个参数是指定从什么位置开始，第二个参数是删除多少个元素，剩余的参数是要添加的元素
+  > let c = a.splice(1, 2, -2, -4, 9, 19); 
+  > document.write(a+"<br />"); //[1, -2, -4, 9, 19, 7]
+  > document.write(c+"<br />"); //[2, 6]
   > ```
 
-* `join()` ---- 将数组转换成多种形式的字符串输出，一个参数，该参数用来定义合并元素的连字符，默认逗号。
+* `join()` ---- 数组转多种形式的字符串的方法，一个参数，该参数用来定义合并元素的连字符，默认逗号。
 
-* `split()` ---- 将**字符串**分割为一个数组，2个参数，第一个参数指定分隔符，第二个参数指定返回数组的长度。
+  > ```javascript
+  > 
+  > 
+  > let arr = ['h', 'e', 'l', 'l', 'o']
+  > 
+  > let str = arr.join(); //如果参数为空，那生成的字符串默认以逗号分隔
+  > console.log(str); //"h,e,l,l,o"
+  > 
+  > let str = arr.join(''); //空字符串，返回的是无间隔的、连续的字符串
+  > console.log(str) //'hello'
+  > 
+  > let str = arr.join(' '); //一个空格字符串，生成的字符串的每个字符以空格分隔
+  > console.log(str); //'h e l l o'
+  > ```
+
+  
 
 * `reverse()`
 
-* `slice()`
+  
 
 * `sort()`
 
-* `split()`
+  
 
-* `toLoacalString()`
+  
 
 * `toString()`
 
 
 
+#### :star:字符串对象方法
 
-
-
+* `split()` ---- 将**字符串**分割为一个数组，2个参数，第一个参数指定分隔符，第二个参数指定返回数组的长度。
 
 
 

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>密码输入框判断</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .register {
+            margin: 200px auto;
+            width: 600px;
+        }
+
+        .register #pwd {
+            width: 200px;
+        }
+
+        .promptMsg {
+            display: inline-block;
+            font-size: 12px;
+            color: #999;
+            background: url(images/mess.png) no-repeat left center;
+            padding-left: 18px;
+        }
+
+        .wrongMsg {
+            background-image: url(images/wrong.png);
+            color: red;
+        }
+
+        .rightMsg {
+            background-image: url(images/right.png);
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="register">
+        <input type="password" id="pwd">
+        <p class="promptMsg">请输入由数字、字母、下划线组成的6到16位密码</p>
+
+        <script>
+            let pwd = document.getElementById('pwd');
+            let promptMsg = document.querySelector('.promptMsg');
+
+            pwd.onblur = function () {
+                if (this.value.length < 6 || this.value.length > 16) {
+                    promptMsg.className = 'promptMsg wrongMsg';
+                    promptMsg.innerHTML = '输入的密码格式不正确';
+                } else {
+                    promptMsg.className = 'promptMsg rightMsg';
+                    promptMsg.innerHTML = '正确输入格式的密码';
+                }
+            }
+        </script>
+    </div>
+</body>
+
+</html>
