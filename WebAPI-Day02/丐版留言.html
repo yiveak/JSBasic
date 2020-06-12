@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>丐版留言</title>
+</head>
+<body>
+    <div><textarea name="" id="" cols="50" rows="10"></textarea></div>
+    <div><button>发布</button><div>
+    <div>
+        <ul></ul>
+    </div>
+
+    <script>
+        // 1. 获取元素
+        let textArea = document.querySelector('textarea');
+        let btn = document.querySelector('button');
+        let comment = document.querySelector('ul');
+
+        //注册事件
+        btn.onclick = function (){
+            if(textArea.value ==''){
+                alert("请输入内容");
+                return false; //结束执行
+            }
+            //创建元素
+            let lists = document.createElement('li');
+            //添加元素
+            // comment.appendChild(lists);
+            // comment.insertBefore(lists, comment.childNodes[0])
+            comment.insertBefore(lists, comment.children[0]);
+            lists.innerHTML = textArea.value; //将留言框里的文本内容赋给新增的元素的元素内容里
+            textArea.value = ''; //清空留言框
+        }
+    </script>
+</body>
+</html>
