@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天使跟随鼠标</title>
+    <style>
+        img {
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="images/angel.gif" alt="">
+    <script>
+        let pic = document.querySelector('img');
+        //给整个页面添加事件侦听器
+        document.addEventListener('mousemove', function (e) {
+            //获得鼠标的坐标，纯数值
+            let x = e.pageX;
+            let y = e.pageY;
+            //将鼠标的坐标赋给图片的top, left
+            //注意单位！
+            /* pic.style.left = x+'px';
+            pic.style.top = y+'px'; */
+
+            //让鼠标居于天使图标的中间
+            pic.style.left = x - 40 + 'px';
+            pic.style.top = y - 35 + 'px';
+
+        })
+    </script>
+</body>
+
+</html>

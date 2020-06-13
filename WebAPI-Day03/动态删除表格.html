@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table {
+            width: 500px;
+            margin: 100px auto;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        td,
+        th {
+            border: 1px solid #333;
+        }
+
+        thead tr {
+            height: 40px;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <table cellspacing="0">
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>科目</th>
+                <th>成绩</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        //定义一组数据
+        let data = [{
+            name: 'alice',
+            subject: 'English',
+            score: 100
+        }, {
+            name: 'john',
+            subject: 'CS',
+            score: 100
+        }, {
+            name: 'finch',
+            subject: 'Math',
+            score: 100
+        }, {
+            name: 'eve',
+            subject: 'Chinese',
+            score: 100
+        }, {
+            name: 'zoe',
+            subject: 'Spanish',
+            score: 100
+        }];
+
+
+        //往tbody里创建行tr --- 添加数据
+        let tbody = document.querySelector('tbody');
+        for (let i = 0; i < data.length; i++) {
+            //创建tr元素
+            let tr = document.createElement('tr');
+            //添加tr元素
+            tbody.appendChild(tr);
+
+            //遍历属性创建td单元格
+            for (let k in data[i]) {
+                //创建td单元格
+                let td = document.createElement('td');
+                //添加td单元格
+                tr.appendChild(td);
+                td.innerHTML = data[i][k];
+            }
+            //创建删除的td元素
+            let td = document.createElement('td');
+            //添加元素
+            td.innerHTML = '<a href="javascript:;">删除</a>';
+            tr.appendChild(td);
+
+        }
+
+        //删除操作
+        let as = document.querySelectorAll('a');
+        for(let i = 0; i <as.length; i++ ){
+            as[i].onclick = function(){
+                tbody.removeChild(this.parentNode.parentNode);
+            }
+        }
+    </script>
+</body>
+
+</html>

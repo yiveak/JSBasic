@@ -428,6 +428,7 @@ The **this** keyword refers to the **current object** , and **its value cannot b
    phone.sendMsg();
 //or phone["sendMsg"]();
    
+   ```
 ```
    
 this关键字 ---- 隐式对象
@@ -447,7 +448,7 @@ this关键字 ---- 隐式对象
        color: brown,
        size: big
    }
-   ```
+```
 
 
 
@@ -939,32 +940,49 @@ graph TB
 
 
 
-DOM1级定义了Node接口，该接口为DOM的所有节点类型定义了原始类型。定义所有节点类型必须
+DOM1级定义了Node接口，该接口为DOM的所有节点类型定义了原始类型。
 
+### 传统、获取元素的方式
 
+> `document` 是主要的入口
+>
+> ```javascript
+> // 1. 通过id名获取该元素
+> // 返回值是：仅一个元素对象
+> document.getElementById('id名')
+> 
+> // 2. 通过标签名获取某类标签元素
+> // 返回值是：元素对象的集合 ---- 伪数组
+> document.getElementsByTagName('标签名')
+> 父元素.getElementsByTagName('标签名')
+> 
+> ```
+>
+> 
 
+### H5、获取元素的方式
 
+> 
+>
+> ```javascript
+> // 1. 通过类名获取元素
+> document.getElementsByClassName('类名')
+> 
+> // 选择器
+> // 根据指定的选择器，返回第一个匹配到的元素对象，即返回的仅有一个元素对象
+> document.querySelector('选择器')
+> 
+> // 1. 获取到的是第一个匹配到类名的元素
+> document.querySelector('.类名')
+> 
+> // 2. 获取到的是第一个匹配到id名的元素
+> document.querySelector('#id名')
+> 
+> // 3. 获取到的是匹配到类名的所有元素，即返回的对象有多个
+> document.querySelectorAll('')
+> ```
 
-获取
-
-`document.getElementById('id名')`
-
-`document.getElemetsByTagName('标签名')`
-
-`document.get`
-
-
-
-H5
-
-```javascript
-document.querySelector('.类名')
-
-document.querySelector('#id名')
-
-document.querySelectorAll('')
-
-```
+### 获取`body` 元素、`html` 元素
 
 ```javascript
 //获取body元素对象
@@ -976,15 +994,329 @@ document.documentElement
 
 
 
-### 事件
+### 事件三要素
 
 触发 ---- 响应机制
 
-事件三要素、三部分组成：事件源、事件类型、事件处理程序
+事件三要素：事件源、事件类型、事件处理程序
 
-* 事件源：事件被触发的对象，比如button
-* 事件类型：如何触发，什么事件，比如鼠标经过、悬停、点击(onclick)、scroll
-* 事件处理程序：通过一个函数赋值方式 完成
+> * 事件源：事件被触发的对象，比如button
+>
+> * 事件类型：如何触发，什么事件，比如鼠标经过、悬停、点击(onclick)、scroll
+>
+> * 事件处理程序：通过一个函数赋值的方式完成
+>
+>   ```
+>   1. 获取元素
+>   2. 绑定事件
+>   3. 事件处理程序
+>   ```
+
+#### 常见的鼠标事件
+
+| 鼠标事件(8) |   触发条件   |
+| :---------: | :----------: |
+|   onclick   |     点击     |
+| onmouseover |   鼠标经过   |
+| onmouseout  |   鼠标离开   |
+|   onfocus   | 获得鼠标焦点 |
+|   onblur    | 鼠标失去焦点 |
+| onmousemove |   鼠标移动   |
+|  onmouseup  |   鼠标弹起   |
+| onmousedown |   鼠标按下   |
+
+
+
+### 操作元素
+
+#### 1. 修改元素的内容
+
+> 1. 通过`innerText` 修改元素的内容
+>
+>    ```javascript
+>    // 从起始位置到终止位置的内容，(不识别HTML标签)去除HTML标签、空格、换行，非标准
+>    element.innerText
+>    ```
+>
+> 2. 通过`innerHTML` 修改元素的内容 :star:
+>
+>    ```javascript
+>    // 从起始位置到终止位置的全部内容，(识别HTML标签)保留HTML标签、空格、换行，W3C推荐，标准
+>    element.innerHTML
+>    ```
+
+#### 2. 修改元素的属性的属性值
+
+通过重新赋值的方式
+
+> 1. 获取属性：元素对象.属性名
+>
+> 2. 设置属性的值：元素对象.属性名 = 属性值
+>
+>    例如：src, href; id, alt, title
+
+#### 3. 操作表单元素
+
+> 利用DOM操作如下表单元素的属性：
+>
+> ```
+> type, value, checked, selected, disabled(表单禁用)
+> 
+> //其中，checked, selected, diabled的属性值是布尔值，即true or false
+> ```
+>
+> 案例：密码框的查看与隐藏
+
+#### 4. 操作样式属性
+
+> Style ---- 样式，改变元素的样式
+>
+> ```javascript
+> // 1.改变行内样式 ---- element.style
+> element.style.样式属性 = 值;
+> 
+> //注意，有些赋的值要注意单位，或者是否以字符串形式
+> div.style.backgroundColor = 'orange'; //字符串形式的值
+> div.style.width = '300px'; //别忘记单位px
+> 
+> 
+> // 2. 改变类名样式 ---- element.className
+> // 如果样式要修改的较多，则通过操作类名方式更改元素样式
+> // className会直接更改元素的类名，覆盖原先的类名，
+> // 那么，如果想保留原有的类，则通常的做法是：element.className = '原类名选择器名 新类名选择器名';
+> element.className = 值;
+> element.className = '类名';
+> 
+> ```
+
+#### 5. 排他操作 :star:
+
+> 如果有同一元素，然后要给其中的某一个元素实现某种样式，这里用到的是循环的排他思想
+>
+> 1. 所有元素遍历清除样式
+> 2. 给当前元素添加样式
+>
+> 案例：切换背景图、表格隔行变色、全选反选。
+
+#### 6. 自定义属性操作 :star:
+
+> * 获取属性值的两种方式：
+>
+>   1. `element.propertyName` 
+>
+>   2. `element.getAttribute('propertyName')`
+>
+>      区别：
+>
+>      * 前者，获取的是元素的内置属性，即元素本身自带的属性
+>      * 后者，获取的是自定义属性，元素的属性可以自定义，比如添加一个'index'的属性
+>
+> * 设置属性值的两种方式：
+>
+>   1. `element.propertyName = 'value'` (设置内置属性)
+>
+>      ```javascript
+>      div.className = 'navs';
+>      ```
+>
+>      
+>
+>   2. `element.setAttribute('propertyName', 'value')` (设置自定义属性，推荐)
+>
+>      ```javascript
+>      div.setAttribute('class', 'footer');
+>      ```
+>
+> * 移除属性，删除属性：
+>
+>   1. `removeAttribute('属性')`
+>
+>      ```javascript
+>      div.removeAttribute('index');
+>      ```
+>
+> 案例：根据tab栏的切换，显示不同的内容。
+
+#### 7. H5自定义属性
+
+> 自定义属性的目的：为了保存并使用数据。有些数据可以保存到页面中，而不用保存到数据库中。
+>
+> H5规定自定义属性，以 `data` 开头，作为属性名且赋值。
+>
+> 1. 设置H5自定义属性
+>
+>    ```html
+>    // 形如，其中的data-index就是H5形式的自定义属性，后者index是自定义属性的属性名
+>    <div data-index = "0"> </div>
+>    ```
+>
+>    ```javascript
+>    element.setAttribute('data-index', 1);
+>    ```
+>
+> 2. 获取H5自定义属性
+>
+>    ```javascript
+>    //兼容性获取自定义属性的属性值
+>    element.getAttribute('data-属性(名)')
+>    
+>    //H5新增，IE 11以上，index指代自定义属性(名)
+>    element.dataset.index
+>    //or
+>    element.dataset['index']
+>    
+>    ```
+
+
+
+### 节点操作
+
+> 节点，node。DOM树中的所有节点都可以通过JavaScript来增、删、改、查。
+>
+> **节点的三个属性**：
+>
+> > * **nodeType(节点类型)**
+> >   * **元素节点**，值为1(实际开发中，常操作的节点是元素节点)
+> >   * 属性节点，值为2
+> >   * 文本节点，值为3(文本节点包括空格、换行)
+> > * **nodeName(节点名称)**
+> > * **nodeValue(节点的值)**
+>
+> 节点层级：父子关系、兄弟关系(**父子兄层级关系**)
+>
+> > **父子**
+> >
+> > > **父级节点** :star:
+> > >
+> > > ```javascript
+> > > // 返回的是最近的一个父节点
+> > > // 如果找不到指定节点的父节点，则返回null
+> > > node.parentNode
+> > > ```
+> > >
+> > > **子节点**
+> > >
+> > > 所有的子节点：
+> > >
+> > > ```javascript
+> > > // 返回的是指定节点下的所有子节点的集合，且该集合是实时更新的集合 标准
+> > > // 所有的子节点集合包括文本节点(文本内容、空格、换行)、元素节点...
+> > > // 因为获取不到指定的子元素节点，所以通常比较少使用
+> > > parentNode.childNodes
+> > > ```
+> > >
+> > > **子元素节点**：:star:
+> > >
+> > > ```javascript
+> > > // 非标准，但实用，实际开发中常用的
+> > > // parentNode.children是一个只读属性，只返回指定元素节点下的所有子元素节点，不包括属性节点、文本节点
+> > > parentNode.children
+> > > ```
+> > >
+> > > **第1个子节点**：`parentNode.firstChild`
+> > >
+> > > **第2个子节点**：`parentNode.lastChild`
+> > >
+> > > **第1个子元素节点**：`parentNode.firstElementChild`  (IE9以上)
+> > >
+> > > **最后1个子元素节点**：`parentNode.lastElementChild`  (IE9以上)
+> > >
+> > > ```
+> > > 因为兼容性问题，那么实际开发中如何获取第1个或最后1个子元素节点？
+> > > 1. 获取第1个子元素节点
+> > > parentNode.children[0]
+> > > 2. 获取最后1个子元素节点
+> > > parentNode.children[parentNode.children.length - 1]
+> > > ```
+> > >
+> > > 案例：新浪移动显示隐藏下拉菜单效果
+> >
+> > **兄弟**
+> >
+> > > **上一个兄弟节点** ：`node.previousSibling`
+> > >
+> > > **下一个兄弟节点** ：`node.nextSibling`
+> > >
+> > > **上一个兄弟元素节点** ：`node.previousElementSibling`  (IE9以上)
+> > >
+> > > **下一个兄弟元素节点** ：`node.nextElementSibling`  (IE9以上)
+> > >
+> > > 封装兼容性函数：
+> > >
+> > > ```javascript
+> > > function getNextElementSibling(element){
+> > >     let el = element;
+> > >     while( el = el.nextSibling ){
+> > >         if( el.nexSibling === 1 ){
+> > >             return el;
+> > >         }
+> > >     }
+> > >     return null;
+> > > }
+> > > ```
+> >
+> > **创建节点** ：`document.createElemnt('tagName')` ---- 动态创建元素节点
+> >
+> > // 创建后的节点，要添加到指定节点处，才能在网页中显示。
+> >
+> > **添加节点** 
+> >
+> > > * `node.appendChild(child)` ---- 将一个节点添加到指定父节点的子节点列表的末尾
+> > > * `node.insertBefore(child， 指定元素)` ---- 将一个节点添加到指定父节点的子节点列表的头部
+> >
+> > ```html
+> > <body>
+> > 	<ul>
+> >         <li>0</li>
+> >     </ul>
+> >     
+> >     <script>
+> >     	// 1. 获取要操作的元素节点
+> >         let ul = document.querySelector('ul');
+> >          // 创建节点
+> >         let moreLi = document.createElement('li');
+> >         // 添加到指定节点处
+> >         // 从ul的尾部追加元素节点
+> >         ul.appendChild(moreLi);
+> >         console.log(ul);
+> >         // 从ul中的头部追加元素节点
+> >         ul.insertBefore(moreLi, ul.children[0]);
+> >         console.log(ul);
+> >     </script>
+> > </body>
+> > ```
+> >
+> > 案例：丐版留言发布。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

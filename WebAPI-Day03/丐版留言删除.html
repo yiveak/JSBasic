@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>丐版留言删除</title>
+
+
+</head>
+
+
+<body>
+    <div><textarea name="" id="" cols="50" rows="10"></textarea></div>
+    <div><button>发布留言</button></div>
+    <div>
+        <ul>
+
+        </ul>
+    </div>
+
+    <script>
+        // 发布留言 + 删除留言
+        // 1. 获取元素
+        let btn = document.querySelector('button');
+        let text = document.querySelector('textarea');
+        let comment = document.querySelector('ul');
+        // 2. 注册事件
+        btn.onclick = function () {
+            if (text.value == '') {
+                return false;
+            }
+            let newComment = document.createElement('li');
+            newComment.innerHTML = text.value + "<a href='javascript:;' >删除</a>";
+            // comment.appendChild(newComment);
+            comment.insertBefore(newComment, comment.children[0]);
+            //每生成一个新的留言，也生成一个新的删除
+            //其中的href = 'javascript:;'，表示链接点击后不跳转
+            text.value = ''; //清空留言框
+            let deleteComment = document.querySelectorAll('a');
+            //循环遍历事件
+            for (let i = 0; i < deleteComment.length; i++) {
+                deleteComment[i].onclick = function () {
+                    comment.removeChild(this.parentNode);
+                }
+            }
+
+
+        }
+    </script>
+</body>
+
+</html>
