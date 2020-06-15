@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定时器的开始跟停止</title>
+</head>
+
+<body>
+    <button class="start">开始定时器</button>
+    <button class="stop">关闭定时器</button>
+    <script>
+        let start = document.querySelector('.start');
+        let stop = document.querySelector('.stop');
+
+        //timeID定义成全局的，为空值，方便clearInterval()即使在函数外部都可以访问
+        let timer = null;
+
+        start.addEventListener('click', function () {
+            timer = setInterval(function () {
+                console.log("计时中")
+            }, 1000);
+        });
+        stop.addEventListener('click', function () {
+            clearInterval(timer);
+        });
+    </script>
+</body>
+
+</html>

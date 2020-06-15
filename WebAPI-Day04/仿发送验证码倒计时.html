@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>仿发送验证码倒计时</title>
+</head>
+
+<body>
+    <button>发送</button>
+    <script>
+        let btn = document.querySelector('button');
+        let tik = 5;
+        btn.addEventListener('click', function () {
+            btn.disabled = true;
+            let timer = setInterval(function () {
+                if (tik == 0) {
+                    clearInterval(timer);
+                    tik = 5;
+                    btn.innerHTML = '发送';
+                    btn.disabled = false;
+                } else {
+                    btn.innerHTML = '还剩' + tik + '秒';
+                    tik--;
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+
+</html>

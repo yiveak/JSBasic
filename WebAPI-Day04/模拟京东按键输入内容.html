@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模拟京东按键输入内容</title>
+</head>
+
+<body>
+    <input type="text">
+    <script>
+        //模拟京东首页搜索框的按下s键，光标自动被搜索框获得焦点
+        let ipt = document.querySelector('input');
+        document.addEventListener('keyup', function (e) {
+            console.log(e.keyCode);
+            if (e.keyCode === 83) {
+                ipt.focus();
+            }
+        })
+    </script>
+</body>
+
+</html>
