@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>缓动动画添加回调函数</title>
+    <style>
+        div {
+            position: absolute;
+            left: 0;
+            width: 120px;
+            height: 120px;
+            background-color: #2d2d;
+        }
+    </style>
+</head>
+
+<body>
+    <button>click to 600</button>
+    <div></div>
+    <script>
+        function animate(obj, target, callback) {
+            // console.log(callback);
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function () {
+                let step = (target - obj.offsetLeft) / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                if (obj.offsetLeft == target) {
+                    clearInterval(obj.timer);
+                    // 回调函数应该写在定时器停止后，即完成动画效果后
+                    // if(callback)callback(); // 如果有回调就执行回调函数
+                    callback ? callback() : null;
+                }
+                obj.style.left = obj.offsetLeft + step + 'px';
+            }, 15)
+        }
+        let btn = document.querySelector('button');
+        let div = document.querySelector('div');
+        let flag = true;
+        btn.addEventListener('click', function () {
+            if (flag) {
+                animate(div, 600, function () {
+                    div.style.backgroundColor = 'red';
+                });
+                btn.innerHTML = 'click to 350';
+                flag = false;
+            } else {
+                animate(div, 350, function () {
+                    div.style.backgroundColor = 'orange';
+                });
+                btn.innerHTML = 'click to 600';
+                flag = true;
+            }
+        })
+    </script>
+</body>
+
+</html>

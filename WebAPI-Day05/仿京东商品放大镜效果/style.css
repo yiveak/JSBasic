@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* 清除浮动 双伪元素*/
+.clearfix::before,
+.clearfix::after {
+    content: "";
+    display: table;
+}
+
+.clearfix::after {
+    clear: both;
+}
+
+/* 取消图像默认以文本基线对齐 */
+img {
+    vertical-align: middle;
+}
+
+body {
+    background-color: #ccc;
+}
+
+.box {
+    position: relative;
+    margin-top: 50px;
+    margin-left: 160px;
+    border: 1px solid red;
+    background-color: #fff;
+}
+
+.orginal_img {
+    /*  */
+    position: relative;
+    float: left;
+    /* width: 398px; */
+    height: 398px;
+    border: 1px solid #ccc;
+}
+
+/* .orginal_img img {
+    width: 100%;
+} */
+
+.orginal_img .mask {
+    /* 鼠标经过后才显示，所以先隐藏起来 */
+    display: none;
+    /* 通过定位摆放位置 子绝父相*/
+    position: absolute;
+    /* 加边偏移 */
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 300px;
+    background-color: yellow;
+    /* opacity 不透明 */
+    opacity: 0.3;
+    cursor: move;
+    /* overflow: hidden; */
+}
+
+.enlarged_img {
+    /* 鼠标经过后才显示，所以先隐藏起来 */
+    display: none;
+    /* 通过定位摆放位置 */
+    position: absolute;
+    /* 加边偏移 */
+    top: 0;
+    left: 405px;
+    width: 500px;
+    height: 500px;
+    /* 提高层级 只有定位属性的元素才能设置这个属性 */
+    z-index: 99;
+    border: 1px solid #ccc;
+    /* 溢出隐藏 因为不能把图片设置成盒子的宽高，而图片宽高大于盒子，则这时候要溢出隐藏 */
+    overflow: hidden;
+}
+
+.enlarged_img .bigImg {
+    position: absolute;
+    top: 0;
+    left: 0;
+}

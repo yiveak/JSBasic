@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>缓动动画效果</title>
+    <style>
+        div {
+            position: absolute;
+            left: 0;
+            width: 120px;
+            height: 120px;
+            background-color: #dfdf;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btn">click to 600</button>
+    <div></div>
+
+    <script>
+        /* 
+        思路：让盒子每次移动的距离变小，即步长在不断地减小
+        算法是：(目标值 - 当前的位置) / 10 ，如此得到的步长即在不断减小
+        */
+        function animate(obj, target) {
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function () {
+                let step = (target - obj.offsetLeft) / 10;
+                // 判断step是大于0，还是小于0
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                if (obj.offsetLeft == target) { //判断是否等于，而不是大于等于。。
+                    clearInterval(obj.timer);
+                }
+                // 将固定的步长改为不断减小的步长：(目标值 - 当前的位置) / 10 
+                // bug1：因为除以10，所以有得到浮点数，最终盒子实际移到的目标位置小于target
+                // 解决方案 向上取整 Math.ceil，另外将步长声明为一个变量 提高可阅读性
+                // obj.style.left = obj.offsetLeft + (target - obj.offsetLeft) / 10 + 'px';
+                // obj.style.left = obj.offsetLeft + Math.ceil(step) + 'px';
+                // bug2: 如果让盒子往后回退，则实际移动到的位置超过了target，解决方式是：step为负值时向下取整
+                obj.style.left = obj.offsetLeft + step + 'px';
+            }, 15)
+        }
+        let btn = document.querySelector('.btn');
+        let div = document.querySelector('div');
+        let flag = true;
+
+        btn.addEventListener('click', function () {
+            if (flag) {
+                animate(div, 600);
+                btn.innerHTML = 'click to 300';
+                flag = false;
+            } else {
+                animate(div, 300);
+                btn.innerHTML = 'click to 600';
+                flag = true;
+            }
+        })
+    </script>
+</body>
+
+</html>
