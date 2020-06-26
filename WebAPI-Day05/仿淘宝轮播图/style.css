@@ -1,0 +1,128 @@
+/* 清除内外边距 */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* 去除图像默认以文字的基线对齐，即底部的空白缝隙 */
+img {
+    vertical-align: middle;
+}
+
+/* 去除li的样式 */
+li {
+    list-style: none;
+}
+
+/* 去除a的样式 */
+a {
+    text-decoration: none;
+}
+
+/* 设置广告轮播图这个大盒子的大小 */
+.promo {
+    position: relative;
+    width: 520px;
+    height: 280px;
+    margin: 50px auto;
+    overflow: hidden;
+}
+
+
+/* 图片 */
+/* 设置插入的图片 */
+.promo ul li a img {
+    width: 100%;
+    height: 100%;
+}
+
+/* 因为图片要左右滑动，所以必须要让li在同行显示，即设置float */
+.promo ul li {
+    float: left;
+}
+
+/* 但接上， 由于所有的li的总宽度完全超过了ul的宽度，那么为了让li在同行显示，就必须将ul设置得足够宽 */
+.promo ul {
+    /* 因为调用动画函数，所以要给设置定位属性 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 600%;
+}
+
+
+/* 左右箭头 */
+/* 设置左右箭头公共样式 */
+.promo .arrow_l,
+.promo .arrow_r {
+    display: none;
+    /* 通过定位的方式摆放位置 注意子绝父相*/
+    position: absolute;
+    /* 加边偏移量 垂直居中*/
+    top: 50%;
+    margin-top: -15px;
+    width: 20px;
+    height: 30px;
+    /* 让盒子里的文本内容垂直居中 */
+    line-height: 30px;
+    /* 让盒子里的文本内容水平居中 */
+    text-align: center;
+    background-color: rgba(0, 0, 0, .2);
+    /* 分别设置左右箭头的border-radius */
+    /* 如果所在盒子也有定位属性，可以通过设置z-index提高 */
+    z-index: 2;
+}
+
+.promo .arrow_l a,
+.promo .arrow_r a {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.promo .arrow_l {
+    /* 居于左 */
+    left: 0;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.promo .arrow_r {
+    /* 居于右 */
+    right: 0;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+/* 底部的小圆点 */
+.promo .promo_nav {
+    /* 通过定位的方式摆放位置 子绝父相 */
+    position: absolute;
+    bottom: 15px;
+    /* 水平居中 */
+    left: 50%;
+    margin-left: -35px;
+    width: 70px;
+    height: 13px;
+    background-color: rgba(255, 255, 255, .4);
+    border-radius: 10px;
+}
+
+.promo .promo_nav ul li {
+    /* 让li同行显示 float */
+    float: left;
+}
+
+.promo .promo_nav ul li a {
+    display: block;
+    /* float: left; */
+    width: 8px;
+    height: 8px;
+    margin: 3px;
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+.promo .promo_nav .current {
+    background-color: #ff5000;
+}

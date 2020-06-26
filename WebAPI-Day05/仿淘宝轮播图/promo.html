@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>仿淘宝广告轮播图</title>
+    <!-- 引入样式文件 -->
+    <link rel="stylesheet" href="style.css">
+    <!-- 引入animate.js文件，必须写在上面，因为依赖关系 -->
+    <script src = "../animate.js"></script>
+    <!-- 引入JS文件 -->
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <div class="promo">
+        <!-- 1. 图像 多张图片 ul-->
+        <ul>
+            <li><a href="#"><img src="images/pic1.jpg" alt=""></a></li>
+            <li><a href="#"><img src="images/pic2.webp" alt=""></a></li>
+            <li><a href="#"><img src="images/pic3.jpg" alt=""></a></li>
+            <li><a href="#"><img src="images/pic4.jpg" alt=""></a></li>
+            <li><a href="#"><img src="images/pic5.jpg" alt=""></a></li>
+        </ul>
+        <!-- 2. 左右箭头 -->
+        <!-- href = "javascript:void(0);"去掉点击a后网址栏中显示的#字符 -->
+        <div class="arrow_l"><a href="javascript:void(0);">&lt;</a></div>
+        <div class="arrow_r"><a href="javascript:void(0);">&gt;</a></div>
+        <!-- 3. 底部的小圆点 -->
+        <div class="promo_nav">
+            <ul class="circle">
+                <!-- <li><a href="#" class="current"></a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li> -->
+            </ul>
+        </div>
+
+    </div>
+</body>
+
+</html>

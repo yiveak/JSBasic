@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>引用animate动画函数</title>
+    <!-- 引入JS文件 -->
+    <script src="animate.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .sliderBar {
+            position: fixed;
+            right: 0;
+            bottom: 50px;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            color: #fff;
+            text-align: center;
+            cursor: pointer;
+            background-color: #ff5000;
+        }
+
+        .feedback {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            color: #fff;
+            font-size: 14px;
+            background-color: #ff5000;
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sliderBar">
+        <span>⇠</span>
+        <div class="feedback">问题反馈</div>
+    </div>
+
+    <script>
+        let feedback = document.querySelector('.feedback');
+        let sliderBar = document.querySelector('.sliderBar');
+        console.log(feedback);
+        console.log(sliderBar);
+        sliderBar.addEventListener('mouseover', function () {
+            // 往左走 负值
+            animate(feedback, -160, function () {
+                // 通过children获取子节点元素
+                sliderBar.children[0].innerHTML = '⇢'
+            })
+        });
+        sliderBar.addEventListener('mouseout', function () {
+            // 走到0的位置即可
+            animate(feedback, 0, function () {
+                sliderBar.children[0].innerHTML = '⇠';
+            });
+        })
+    </script>
+</body>
+
+</html>
