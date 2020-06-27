@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户名正则验证</title>
+    <style>
+        .right {
+            color: green;
+        }
+
+        .wrong {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" name="username" id="" class="uname">
+    <span>请输入用户名</span>
+    <script>
+        /* 
+        功能需求：
+        1. 如果用户名输入合法，则提示：输入正确，且显示绿色
+        2. 如果用户名输入不合法，则提示：输入错误，且显示红色
+        */
+        let regexp = /^[a-z0-9_-]{6,16}$/;
+        let uname = document.querySelector('.uname');
+        let span = document.querySelector('span');
+        uname.onblur = function () {
+            if (regexp.test(this.value)) {
+                span.className = 'right';
+                span.innerHTML = '格式输入正确';
+            } else {
+                span.className = 'wrong';
+                span.innerHTML = '格式输入错误';
+            }
+        }
+    </script>
+</body>
+
+</html>

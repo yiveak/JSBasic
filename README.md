@@ -1292,6 +1292,37 @@ document.documentElement
 
 
 
+> **`offSet`**
+>
+> 
+>
+> **`client`** ：可视区
+>
+> | 属性                       | 作用                                                        |
+> | -------------------------- | ----------------------------------------------------------- |
+> | `element.clientTop`        | 返回元素上边框大小                                          |
+> | `element.clientLeft`       | 返回元素左边框大小                                          |
+> | **`element.clientWidth`**  | 返回自身包括padding，内容区的宽度，不含边框，返回数值无单位 |
+> | **`element.clientHeight`** | 返回自身包括padding，内容区的高度，不含边框，返回数值无单位 |
+>
+> **`scroll`** ：当滚动条发生变化时，触发的事件。返回的数值不带单位
+>
+> | 属性                     | 作用                         |
+> | ------------------------ | ---------------------------- |
+> | **`element.scrollTop`**  | 返回被卷去的上侧距离         |
+> | **`element.scrollLeft`** | 返回被卷去的左侧距离         |
+> | `element.scrollWidth`    | 返回自身实际的宽度，不含边框 |
+> | `element.scrollHeight`   | 返回自身实际的高度，不含边框 |
+>
+> ```javascript
+> let div = document.querySelector('div');
+> div.addEventListener('scroll', function(){
+>    console.log(div.scrollTop) 
+> });
+> ```
+>
+> 
+
 
 
 
