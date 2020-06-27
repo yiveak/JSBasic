@@ -8,9 +8,32 @@
 </head>
 
 <body>
-
+    <input type="text">
+    <button class="set">存储数据</button>
+    <button class="get">获取数据</button>
+    <button class="remove">删除数据</button>
+    <button class="clear">清空数据</button>
     <script>
         /* window.localStorage的生命周期是永久的，即使关闭了浏览器，除非手动删除 */
+        let ipt = document.querySelector('input');
+        let btnSet = document.querySelector('.set');
+        let btnGet = document.querySelector('.get');
+        let btnRemove = document.querySelector('.remove');
+        let btnClear = document.querySelector('.clear');
+
+        btnSet.addEventListener('click', function () {
+            let value = ipt.value;
+            localStorage.setItem('username', value);
+        });
+        btnGet.addEventListener('click', function () {
+            console.log(localStorage.getItem('username'));
+        });
+        btnRemove.addEventListener('click', function () {
+            localStorage.removeItem('username');
+        });
+        btnClear.addEventListener('click', function () {
+            localStorage.clear();
+        })
     </script>
 </body>
 
