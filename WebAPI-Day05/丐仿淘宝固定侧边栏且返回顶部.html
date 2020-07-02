@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>仿淘宝固定侧边栏</title>
+    <style>
+        body {
+            height: 3000px;
+        }
+        .banner {
+            width: 1200px;
+            height: 900px;
+            margin: 100px auto;
+            background-color: orange;
+        }
+        .slider_bar {
+            position: absolute;
+            right: 100px;
+            top: 75%;
+            width: 40px;
+            height: 120px;
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner"></div>
+    <div class="slider_bar"></div>
+    <script>
+        /* 
+        
+        
+        通过window.scroll(x, y);滚动窗口到页面文档中的特定位置 无单位
+        
+        */
+
+        let silderBar = document.querySelector('.slider_bar');
+
+        // 是页面的滚动事件
+        document.addEventListener('scroll', function(){
+            // 通过windows.pageYOffset获取页面被卷去的头部
+            // console.log(window.pageYOffset);
+            if (window.pageYOffset >= 80){
+                silderBar.style.position = 'fixed';
+                console.log(silderBar.style.position);
+            }else {
+                silderBar.style.position = 'absolute';
+
+            }
+        })
+    </script>
+</body>
+</html>

@@ -24,7 +24,6 @@
         .tab_list {
             height: 39px;
             border: 1px solid #ccc;
-            background-color: #f1f1f1;
         }
 
         .tab_list li {
@@ -81,7 +80,7 @@
 
         </div>
     </div>
-    <script>
+    <!-- <script>
         // 1.处理tab_list事件
         // 1. 获取元素
         let tabLists = document.querySelector('.tab_list').querySelectorAll('li');
@@ -106,6 +105,29 @@
                 // console.log(tabContents[index]);
                 tabContents[index].style.display = 'block';
             }
+        }
+    </script> -->
+
+
+    <script>
+        let tabList = document.querySelector('.tab_list').querySelectorAll('li');
+        let tabConItem = document.querySelector('.tab_con').querySelectorAll('.item');
+
+        for (let i = 0; i < tabList.length; i++) {
+            tabList[i].setAttribute('index', i);
+            let index = tabList[i].getAttribute('index');
+            // console.log(index);
+            tabList[i].onclick = function () {
+                for (let i = 0; i < tabList.length; i++) {
+                    tabList[i].className = '';
+                }
+                tabList[i].className = 'current';
+                for (let i = 0; i < tabConItem.length; i++) {
+                    tabConItem[i].style.display = 'none';
+                }
+                tabConItem[index].style.display = 'block';
+            }
+
         }
     </script>
 </body>
