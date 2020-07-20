@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>发送POST请求</title>
+  </head>
+  <body>
+    Username: <input type="text" name="username" id="uname" />
+    <br />
+    Password: <input type="password" id="password" />
+    <br />
+    <button>Submit</button>
+
+    <script>
+      const btn = document.querySelector("button");
+      const uname = document.querySelector("#uname");
+      const pwd = document.querySelector("#password");
+
+      btn.addEventListener("click", function () {
+        // 1. 获取页面上元素的value
+        let username = uname.value;
+        let password = pwd.value;
+        // 2. 通过AJAX的方式(XHR)发送数据 POST
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "x.php");
+        xhr.setRequestHeader(
+          "Content-Type",
+          "application/x-www-form-urlencoded"
+        );
+        xhr.send("username=" + username + "&password=" + password);
+        // or xhr.send(`username=${username}&password${password}`);
+        // 3. 服务器端接收到数据后，作出页面提示
+        xhr.onreadystatechange = function () {
+          if (this.readyState !== 4) return;
+          console.log(this.responseText);
+        };
+      });
+    </script>
+  </body>
+</html>

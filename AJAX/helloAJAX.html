@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>helloAJAX</title>
+  </head>
+  <body>
+    <script>
+      // AJAX API 核心提供的类型 XMLHttpRequest
+
+      // 1. 创建一个实例对象(初始化代理对象)，用于发送请求、接收数据
+      var xhr = new XMLHttpRequest();
+      console.log(xhr.readyState); // readyState: 0
+
+      // 2. 设置请求行 建立与服务端特定端口的请求
+      xhr.open("GET", "http://example.url");
+      console.log(xhr.readyState); // readyState: 1
+
+      // 设置请求头，如果请求体的内容是urlencoded格式的内容，那么必须设置Content-Type
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+      // 3.
+      xhr.send("key1=val1&key2=val2");
+      // 一般不设置请求体
+      xhr.send(null);
+      console.log(xhr.readyState); // readyState: 1
+
+      // 根据XHR的状态触发事件
+      xhr.onreadystatechange = function () {
+        console.log(this);
+        console.log(this.readyState); // 状态：2， 3， 4
+        switch (this.readyState) {
+          case 2:
+            // 可以获取状态行、响应头
+            console.log(this.readyState); // 状态2：表示接收到了响应报文的响应头
+            // 获取整个响应头
+            console.log(this.getAllResponseHeaders());
+            // 获取响应头中指定属性的属性值
+            console.log(this.getAllResponseHeaders("date"));
+            // 处理响应头
+            console.log(this.getAllResponseHeaders().split(","));
+            break;
+          case 3:
+            // 正在下载响应体，响应体的内容可能为空，即可能不完整。responseText属性中已包含部分数据
+            // 所以在这里处理响应体，不可靠
+            console.log(this.readyState); // 状态3：表示请求处理中，已有部分数据可用，但是服务器并没有完成响应的生成
+            break;
+          case 4:
+            // 整个响应体内容都已经完全下载下来，可以直接使用responseText属性
+            console.log(this.readyState);
+            console.log(this.responseText);
+            break;
+        }
+        //
+        if (this.readyState !== 4) {
+          return;
+        }
+        // 获取响应内容(响应体)
+        console.log(this.responseText);
+      };
+    </script>
+  </body>
+</html>

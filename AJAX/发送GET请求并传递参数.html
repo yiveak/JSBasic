@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>发送GET请求并传递参数</title>
+  </head>
+  <body>
+    <ul id="list">
+      <!-- <li></li> -->
+    </ul>
+
+    <script>
+      let listElement = document.querySelectorAll("#list");
+      const xhr = new XMLHttpRequest();
+
+      xhr.open("GET", "x.php");
+
+      xhr.send();
+      // or xhr.send(null);
+
+      xhr.onreadystatechange = function () {
+        if (this.readyState !== 4) return;
+        console.log(this);
+        // 响应体文本内容，字符串形式
+        console.log(this.responseText);
+        // 转换格式，得到是一个对象形式的数据内容
+        let data = JSON.parse(this.responseText);
+        // 遍历data对象
+        // data.forEach()
+        for (let i = 0; i < data.length; i++) {
+          console.log(data[i]);
+          let liElement = document.createElement("li");
+          liElement.innerHTML = data[i];
+          liElement.id = data[i].id;
+
+          listElement.appendChild(listElement);
+          // 给每个li 注册点击事件
+          liElement.addEventListener("click", function () {
+            // 通过AJAX获取服务器端对应数据的信息
+            // 如何获取当前被点击数据的id？
+            conssole.log(this.id);
+            let xhrLi = new XMLHttpRequest();
+            xhrLi.open("GET", "x.php?id=" + this.id);
+            xhrLi.send(null);
+            xhrLi.onreadystatechange = function () {
+              if (this.readyState !== 4) return;
+              console.log(this.responseText);
+              let dataLi = JSON.parse(this.responseText);
+              alert(dataLi.age);
+            };
+          });
+        }
+      };
+    </script>
+  </body>
+</html>
